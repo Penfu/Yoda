@@ -1,9 +1,9 @@
 <html>
     <head>
-        <title>{{ $title ?? 'Todo Manager' }}</title>
+        <title>{{ config('app.name') . ' - ' . $title ?? 'Todo Manager' }}</title>
     </head>
     <body>
-        <h1>Todos</h1>
+        <h1>{{ $title }}</h1>
         <hr/>
         {{ $slot }}
     </body>
