@@ -29,3 +29,9 @@ Generate the tailwind.config.js file:
 ```bash
 npx tailwindcss init
 ```
+
+Edit the webpack.mix.js file to include the generated tailwind.config.js file:
+
+```bash
+npm run dev
+```
