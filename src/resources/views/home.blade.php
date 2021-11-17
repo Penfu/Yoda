@@ -1,7 +1,11 @@
-<x-layout>
-    <x-slot name="title">
-        Home
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Home') }}
+        </h2>
     </x-slot>
 
-   
-</x-layout>
+    <div class="py-12">
+        @livewire('best-practice-container', ['bestPractices' => $bestPractices])
+    </div>
+</x-app-layout>
