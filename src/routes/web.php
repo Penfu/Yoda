@@ -22,6 +22,11 @@ Route::get('/', function () {
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
+Route::middleware(['guest:'.config('fortify.guard')])->group(function () {
+    Route::get('login/github', [LoginController::class, 'github'])->name('login.github');
+    Route::get('login/google', [LoginController::class, 'google'])->name('login.google');
+});
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
