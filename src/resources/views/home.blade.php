@@ -6,6 +6,6 @@
     </x-slot>
 
     <div class="py-12">
-        @livewire('best-practice-container', ['bestPractices' => $bestPractices])
+        @livewire('best-practice-container')
     </div>
 </x-app-layout>
