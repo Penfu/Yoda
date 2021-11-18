@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class BestPracticeFactory extends Factory
+class PracticeFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -14,7 +14,6 @@ class BestPracticeFactory extends Factory
     public function definition()
     {
         return [
-            'name' => ucfirst($this->faker->unique()->domainWord()),
             'description' => $this->faker->realText(1000),
         ];
     }

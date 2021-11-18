@@ -10,8 +10,13 @@
             @csrf
 
             <div>
-                <x-jet-label for="pseudo" value="{{ __('Pseudo') }}" />
-                <x-jet-input id="pseudo" class="block mt-1 w-full" type="text" name="pseudo" :value="old('pseudo')" required autofocus autocomplete="pseudo" />
+                <x-jet-label for="name" value="{{ __('Name') }}" />
+                <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+            </div>
+            
+            <div class="mt-4">
+                <x-jet-label for="fullname" value="{{ __('Fullname') }}" />
+                <x-jet-input id="fullname" class="block mt-1 w-full" type="text" name="fullname" :value="old('fullname')" required autofocus autocomplete="fullname" />
             </div>
 
             <div class="mt-4">

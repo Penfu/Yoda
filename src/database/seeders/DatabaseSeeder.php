@@ -13,8 +13,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
         \App\Models\BestPractice::factory()->count(15)->create();
 
+        $this->call([
+            PublicationStateSeeder::class,
+            DomainSeeder::class,
+            RoleSeeder::class,
+            
+            UserSeeder::class,
+        ]);
     }
 }
