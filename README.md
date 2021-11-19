@@ -1,37 +1,42 @@
 # ES-CPNV-Yoda
 
-## Project initialisation
+## Local development
 
-### Initalise Laravel
+Clone the repo where ever you want.
 
 ```bash
-composer create-project laravel/laravel example-app
-cd example-app
+git clone https://github.com/Penfu/ES-CPNV-Yoda.git
+```
+
+First move into code directory `cd src/` and install packages dependencies.
+
+```bash
+cd src/
+composer install
+npm install
+```
+
+Setup the environment variables by making your own __.env__ file from the example one.
+Run the migrations and seeders.
+
+```bash
+php artisan migrate --seed
+```
+
+Build the project resources.
+
+```bash
+npm run build
+```
+
+Generate the encryption key
+
+```bash
+php artisan key:generate
+```
+
+Finaly start the server.
+
+```bash
 php artisan serve
-```
-
-### Initialise Livewire
-
-```bash
-composer require livewire/livewire
-```
-
-### Initialise TailwindCSS
-
-Install Tailwind and its peer-dependencies using npm:
-
-```bash
-npm install -D tailwindcss@latest postcss@latest autoprefixer@latest
-```
-
-Generate the tailwind.config.js file:
-
-```bash
-npx tailwindcss init
-```
-
-Edit the webpack.mix.js file to include the generated tailwind.config.js file:
-
-```bash
-npm run dev
 ```
