@@ -19,8 +19,8 @@ class UserSeeder extends Seeder
     {
         User::insert([
             'role_id' => Role::where('slug', 'admin')->first()->id,
-            'name' => 'Armand',
-            'fullname' => 'Marechal',
+            'name' => 'Penfu',
+            'fullname' => 'Armand Marechal',
             'email' => 'armand.marechal@cpnv.ch',
             'email_verified_at' => now(),
             'password' => Hash::make('root'),
