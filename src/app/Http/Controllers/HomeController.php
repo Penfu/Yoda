@@ -9,10 +9,6 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $bestPractices = BestPractice::all();
-
-        return view('home', [
-            'bestPractices' => $bestPractices
-        ]);
+        return view('home');
     }
 }
