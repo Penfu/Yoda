@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,5 +29,5 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/practices', function () {
 
 Route::middleware(['guest:' . config('fortify.guard')])->group(function () {
     Route::get('login/github', [LoginController::class, 'github'])->name('login.github');
-    Route::get('login/google', [LoginController::class, 'google'])->name('login.google');
+    Route::get('login/github/callback', [LoginController::class, 'githubCallback']);
 });

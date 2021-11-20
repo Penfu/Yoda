@@ -44,8 +44,8 @@
                 </x-jet-button>
             </div>
             <div class="flex flex-col gap-y-2 mt-4 text-center">
-                <a href="#" class="px-4 py-2 w-full bg-gray-800 rounded text-white">Log in with GitHub</a>
-                <a href="#" class="px-4 py-2 w-full bg-white rounded border border-gray-300 text-black">Log in with Google</a>
+                <a href="{{ route('login.github') }}" class="px-4 py-2 w-full bg-gray-800 rounded text-white">Log in with GitHub</a>
+                <a href="{{ route('login.google') }}" class="px-4 py-2 w-full bg-white rounded border border-gray-300 text-black">Log in with Google</a>
             </div>
         </form>
     </x-jet-authentication-card>
