@@ -16,8 +16,8 @@ class DomainSeeder extends Seeder
     {
         $domains = [
             [
-                'name' => 'Domain 1',
-                'slug' => 'domain-1',
+                'name' => 'Development',
+                'slug' => 'dev',
             ],
             [
                 'name' => 'Domain 2',

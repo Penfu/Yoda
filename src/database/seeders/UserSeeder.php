@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
     public function run()
     {
         User::insert([
-            'role_id' => Role::where('slug', 'admin')->first()->id,
+            'role_id' => Role::firstWhere('slug', 'admin')->id,
             'name' => 'Penfu',
             'fullname' => 'Armand Marechal',
             'email' => 'armand.marechal@cpnv.ch',
