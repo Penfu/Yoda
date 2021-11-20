@@ -27,6 +27,10 @@ Then run the migrations and seeders.
 php artisan migrate --seed
 ```
 
+### OAuth
+
+If you attempt to use the OAuth2 provider, you will need to create a **client** and **secret** inside the .env file and configure the **curl.cainfo** inside your php.ini file.
+
 ### Public resources
 
 Build the resources to public directory.
