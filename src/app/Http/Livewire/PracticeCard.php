@@ -13,10 +13,4 @@ class PracticeCard extends Component
     {
         return view('livewire.practice-card');
     }
-
-    public function delete()
-    {
-        $this->practice->delete();
-        $this->emit('practiceDeleted');
-    }
 }

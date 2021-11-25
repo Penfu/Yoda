@@ -48,5 +48,8 @@
                 </div>
             </div>
         </div>
+        <div class="py-12">
+            @livewire('practice-container')
+        </div>
     </div>
 </x-app-layout>

@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Domain extends Model
 {
     use HasFactory;
+
+    public function practices()
+    {
+        return $this->hasMany(Practice::class);
+    }
 }
