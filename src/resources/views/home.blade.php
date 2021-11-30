@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="max-w-7xl mx-auto my-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto pt-8 px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-3 grid-flow-row gap-4">
             <div class="col-span-1">
                 <h1 class="text-6xl font-bold uppercase">Best Practices.</h1>

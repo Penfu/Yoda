@@ -53,6 +53,6 @@ class PracticeSeeder extends Seeder
         }
 
         // and a few fake ones
-        Practice::factory(10)->create();
+        Practice::factory(30)->create();
     }
 }

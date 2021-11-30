@@ -5,7 +5,7 @@ namespace Database\Factories;
 use App\Models\Domain;
 use App\Models\PublicationState;
 use App\Models\User;
-use Database\Seeders\PublicationStateSeeder;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PracticeFactory extends Factory
@@ -22,6 +22,7 @@ class PracticeFactory extends Factory
             'domain_id' => Domain::all()->random()->id,
             'publication_state_id' => PublicationState::all()->random()->id,
             'user_id' => User::all()->random()->id,
+            'updated_at' => Carbon::now()->subMinutes(rand(1, 5*24*60))
         ];
     }
 }
