@@ -49,7 +49,7 @@
             </div>
         </div>
         <div class="py-12">
-            @livewire('practice-container')
+            <livewire:practice-container state="PUB" lastupdate="5" />
         </div>
     </div>
 </x-app-layout>
