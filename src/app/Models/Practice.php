@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -21,13 +19,25 @@ class Practice extends Model
         return $this->belongsTo(publicationState::class);
     }
 
-    public static function recentUpdates($days) : Builder
+    /*
+    public static function updatedSince($days, $query = null): Builder
     {
-        return Practice::where('updated_at', '>=', Carbon::now()->subDays((int)$days)->toDateTimeString());
+        return isset($query)
+            ? $query->where('updated_at', '>=', Carbon::now()->subDays((int)$days)->toDateTimeString())
+            : Practice::where('updated_at', '>=', Carbon::now()->subDays((int)$days)->toDateTimeString());
     }
 
-    public static function filterByPublicationState($publicationState) : Builder
+    public static function wherePublicationState($state, $query = null): Builder
     {
-        return Practice::where('publication_state_id', $publicationState);
+        return isset($query)
+        ? $query::whereHas(
+            'publicationState',
+            fn ($publicationState) => $publicationState->where('slug', $state)
+        )
+        : Practice::whereHas(
+            'publicationState',
+            fn ($publicationState) => $publicationState->where('slug', $state)
+        );
     }
+    */
 }

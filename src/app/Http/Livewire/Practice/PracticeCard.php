@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Practice;
 
 use Livewire\Component;
 use App\Models\Practice;
@@ -11,6 +11,6 @@ class PracticeCard extends Component
 
     public function render()
     {
-        return view('livewire.practice-card');
+        return view('livewire.practice.practice-card');
     }
 }
