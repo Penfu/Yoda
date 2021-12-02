@@ -32,13 +32,13 @@
 
                             <x-slot name="content">
                                 <x-jet-dropdown-link href="{{ route('domains') }}">
-                                    {{ __('Toutes ') . App\Models\Practice::whereHas('publicationState', fn($publicationState) => $publicationState->where('slug', 'PUB'))->count() }}
+                                    {{ __('Toutes ') . App\Models\Practice::wherePublicationState('PUB')->count() }}
                                 </x-jet-dropdown-link>
                                 @foreach (App\Models\Domain::all() as $domain)
                                     <x-jet-dropdown-link
                                         href="{{ route('domains.domain', ['domain' => $domain->slug]) }}">
                                         {{ $domain->name }}
-                                        {{ $domain->practices()->whereHas('publicationState', fn($publicationState) => $publicationState->where('slug', 'PUB'))->count() }}
+                                        {{ App\Models\Practice::wherePublicationState('PUB', $domain->practices())->count() }}
                                     </x-jet-dropdown-link>
                                 @endforeach
                             </x-slot>
@@ -152,7 +152,7 @@
                                     @csrf
 
                                     <x-jet-dropdown-link href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                                                this.closest('form').submit();">
+                                                                                    this.closest('form').submit();">
                                         {{ __('Log Out') }}
                                     </x-jet-dropdown-link>
                                 </form>
@@ -205,12 +205,12 @@
 
                     <x-slot name="content">
                         <x-jet-dropdown-link href="{{ route('domains') }}">
-                            {{ __('Toutes ') . App\Models\Practice::whereHas('publicationState', fn($publicationState) => $publicationState->where('slug', 'PUB'))->count() }}
+                            {{ __('Toutes ') . App\Models\Practice::wherePublicationState('PUB')->count() }}
                         </x-jet-dropdown-link>
                         @foreach (App\Models\Domain::all() as $domain)
                             <x-jet-dropdown-link href="{{ route('domains.domain', ['domain' => $domain->slug]) }}">
                                 {{ $domain->name }}
-                                {{ $domain->practices()->whereHas('publicationState', fn($publicationState) => $publicationState->where('slug', 'PUB'))->count() }}
+                                {{ App\Models\Practice::wherePublicationState('PUB', $domain->practices())->count() }}
                             </x-jet-dropdown-link>
                         @endforeach
                     </x-slot>
@@ -253,7 +253,7 @@
                         @csrf
 
                         <x-jet-responsive-nav-link href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                                    this.closest('form').submit();">
+                                                                        this.closest('form').submit();">
                             {{ __('Log Out') }}
                         </x-jet-responsive-nav-link>
                     </form>
