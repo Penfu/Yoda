@@ -19,7 +19,11 @@ class LoginController extends Controller
     public function githubCallback()
     {
         // Get oauth request back from Github
-        $user = Socialite::driver('github')->user();
+        try {
+            $user = Socialite::driver('github')->user();
+        } catch (\Exception $e) {
+            $user = Socialite::driver('github')->stateless()->user();
+        }
 
         $user = User::firstOrCreate([
             'email' => $user->getEmail()
