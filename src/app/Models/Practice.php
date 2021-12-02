@@ -43,4 +43,9 @@ class Practice extends Model
             fn ($q) => $q->where('slug', $domain)
         );
     }
+
+    public function isPublished()
+    {
+        return $this->publicationState->slug == 'PUB' ? true : false;
+    }
 }

@@ -26,7 +26,8 @@ Route::get('/', function () {
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/practice-{practice}', [PracticeController::class, 'index'])->name('practice');
+Route::get('/practice-{practice}', [PracticeController::class, 'index'])->name('practice')->middleware('publication.state');
+
 Route::get('/domains', [DomainController::class, 'index'])->name('domains');
 Route::get('/domains-{domain}', [DomainController::class, 'byDomain'])->name('domains.domain');
 
