@@ -14,7 +14,7 @@ class DomainController extends Controller
 
     public function byDomain($domain)
     {
-        $domain = Domain::where('slug', $domain)->first();
+        $domain = Domain::whereSlug($domain)->firstOrFail();
 
         session(['domain' => $domain]);
         return view('domains')->with('domain', $domain);

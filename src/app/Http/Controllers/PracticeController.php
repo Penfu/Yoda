@@ -9,7 +9,7 @@ class PracticeController extends Controller
 {
     public function index($practice)
     {
-        $practice = Practice::find($practice);
+        $practice = Practice::findOrFail($practice);
         return view('practice')->with('practice', $practice);
     }
 }

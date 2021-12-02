@@ -31,7 +31,7 @@ class Practice extends Model
         $query = $query ?? self::query();
         return $query->whereHas(
             'publicationState',
-            fn ($publicationState) => $publicationState->where('slug', $state)
+            fn ($q) => $q->where('slug', $state)
         );
     }
 
@@ -40,7 +40,7 @@ class Practice extends Model
         $query = $query ?? self::query();
         return $query->whereHas(
             'domain',
-            fn ($query) => $query->where('slug', $domain)
+            fn ($q) => $q->where('slug', $domain)
         );
     }
 }
