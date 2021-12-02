@@ -20,6 +20,11 @@ class Practice extends Model
         return $this->belongsTo(publicationState::class);
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
     public static function updatedSince($days, $query = null)
     {
         $query = $query ?? self::query();
