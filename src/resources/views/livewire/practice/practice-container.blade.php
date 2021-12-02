@@ -8,7 +8,7 @@
         </div>
     @endisset
 
-    <div class="grid grid-cols-1 gap-y-4 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
+    <div class="grid grid-cols-1 gap-y-4 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8 transition duration-1000">
         @forelse ($practices as $practice)
             <livewire:practice.practice-card :practice="$practice" :key="$practice->id" />
         @empty

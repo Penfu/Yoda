@@ -15,19 +15,13 @@ class PracticeContainer extends Component
 
     public function render()
     {
-        $practices = Practice::whereHas(
-            'publicationState',
-            fn ($publicationState) => $publicationState->where('slug', 'PUB')
-        );
+        $practices = Practice::wherePublicationState('PUB');
 
         if (isset($this->days)) {
-            $practices = $practices->where('updated_at', '>=', Carbon::now()->subDays((int)$this->days)->toDateTimeString());
+            $practices = Practice::updatedSince($this->days, $practices);
         }
         if (isset($this->domain)) {
-            $practices = $practices->whereHas(
-                'domain',
-                fn ($query) => $query->where('slug', $this->domain->slug)
-            );
+            $practices = Practice::whereDomain($this->domain->slug, $practices);
         }
 
         $this->practices = $practices->get();

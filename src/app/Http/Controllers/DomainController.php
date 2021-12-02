@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Domain;
 
-class PracticesController extends Controller
+class DomainController extends Controller
 {
     public function index()
     {
         session()->forget('domain');
-        return view('practices');
+        return view('domains');
     }
 
     public function byDomain($domain)
@@ -17,6 +17,6 @@ class PracticesController extends Controller
         $domain = Domain::where('slug', $domain)->first();
 
         session(['domain' => $domain]);
-        return view('practices')->with('domain', $domain);
+        return view('domains')->with('domain', $domain);
     }
 }

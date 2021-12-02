@@ -4,7 +4,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\PracticesController;
+use App\Http\Controllers\PracticeController;
+use App\Http\Controllers\DomainController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,8 +26,9 @@ Route::get('/', function () {
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/practices', [PracticesController::class, 'index'])->name('practices');
-Route::get('/practices-{domain}', [PracticesController::class, 'byDomain'])->name('practices.domain');
+Route::get('/practice-{practice}', [PracticeController::class, 'index'])->name('practice');
+Route::get('/domains', [DomainController::class, 'index'])->name('domains');
+Route::get('/domains-{domain}', [DomainController::class, 'byDomain'])->name('domains.domain');
 
 Route::middleware(['guest:' . config('fortify.guard')])->group(function () {
     Route::get('login/github', [LoginController::class, 'github'])->name('login.github');

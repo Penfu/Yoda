@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -19,25 +20,27 @@ class Practice extends Model
         return $this->belongsTo(publicationState::class);
     }
 
-    /*
-    public static function updatedSince($days, $query = null): Builder
+    public static function updatedSince($days, $query = null)
     {
-        return isset($query)
-            ? $query->where('updated_at', '>=', Carbon::now()->subDays((int)$days)->toDateTimeString())
-            : Practice::where('updated_at', '>=', Carbon::now()->subDays((int)$days)->toDateTimeString());
+        $query = $query ?? self::query();
+        return $query->where('updated_at', '>=', Carbon::now()->subDays((int)$days)->toDateTimeString());
     }
 
-    public static function wherePublicationState($state, $query = null): Builder
+    public static function wherePublicationState($state, $query = null)
     {
-        return isset($query)
-        ? $query::whereHas(
-            'publicationState',
-            fn ($publicationState) => $publicationState->where('slug', $state)
-        )
-        : Practice::whereHas(
+        $query = $query ?? self::query();
+        return $query->whereHas(
             'publicationState',
             fn ($publicationState) => $publicationState->where('slug', $state)
         );
     }
-    */
+
+    public static function whereDomain($domain, $query = null)
+    {
+        $query = $query ?? self::query();
+        return $query->whereHas(
+            'domain',
+            fn ($query) => $query->where('slug', $domain)
+        );
+    }
 }

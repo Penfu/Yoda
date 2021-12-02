@@ -1,4 +1,4 @@
-@props(['align' => 'right', 'width' => '48', 'contentClasses' => 'py-1 bg-white', 'dropdownClasses' => ''])
+@props(['align' => 'right', 'width' => 'w-48', 'contentClasses' => 'py-1 bg-white', 'dropdownClasses' => ''])
 
 @php
 switch ($align) {
@@ -17,15 +17,9 @@ switch ($align) {
         $alignmentClasses = 'origin-top-right right-0';
         break;
 }
-
-switch ($width) {
-    case '48':
-        $width = 'w-48';
-        break;
-}
 @endphp
 
-<div class="relative" x-data="{ open: false }" @click.away="open = false" @close.stop="open = false">
+<div class="relative w-full sm:w-auto" x-data="{ open: false }" @click.away="open = false" @close.stop="open = false">
     <div @click="open = ! open">
         {{ $trigger }}
     </div>
