@@ -25,31 +25,33 @@ class Practice extends Model
         return $this->belongsTo(User::class);
     }
 
-    public static function updatedSince($days, $query = null)
+    public function scopeUpdatedSince($query, string $days)
     {
-        $query = $query ?? self::query();
         return $query->where('updated_at', '>=', Carbon::now()->subDays((int)$days)->toDateTimeString());
     }
 
-    public static function wherePublicationState($state, $query = null)
+    public function scopeOfDomain($query, string $domain)
     {
-        $query = $query ?? self::query();
-        return $query->whereHas(
-            'publicationState',
-            fn ($q) => $q->where('slug', $state)
-        );
-    }
-
-    public static function whereDomain($domain, $query = null)
-    {
-        $query = $query ?? self::query();
         return $query->whereHas(
             'domain',
             fn ($q) => $q->where('slug', $domain)
         );
     }
 
-    public function isPublished()
+    public function scopePublished($query)
+    {
+        return $this->wherePublicationState($query, 'PUB');
+    }
+
+    private function wherePublicationState($query, string $state)
+    {
+        return $query->whereHas(
+            'publicationState',
+            fn ($q) => $q->where('slug', $state)
+        );
+    }
+
+    public function isPublished(): bool
     {
         return $this->publicationState->slug == 'PUB' ? true : false;
     }

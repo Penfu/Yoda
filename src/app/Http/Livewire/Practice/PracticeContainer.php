@@ -3,7 +3,6 @@
 namespace App\Http\Livewire\Practice;
 
 use App\Models\Practice;
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Livewire\Component;
 
@@ -15,14 +14,10 @@ class PracticeContainer extends Component
 
     public function render()
     {
-        $practices = Practice::wherePublicationState('PUB');
+        $practices = Practice::published();
 
-        if (isset($this->days)) {
-            $practices = Practice::updatedSince($this->days, $practices);
-        }
-        if (isset($this->domain)) {
-            $practices = Practice::whereDomain($this->domain->slug, $practices);
-        }
+        if (isset($this->days)) $practices->updatedSince($this->days);
+        if (isset($this->domain)) $practices->ofDomain($this->domain->slug);
 
         $this->practices = $practices->get();
         return view('livewire.practice.practice-container');

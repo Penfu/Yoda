@@ -29,7 +29,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/practice-{practice}', [PracticeController::class, 'index'])->name('practice')->middleware('publication.state');
 
 Route::get('/domains', [DomainController::class, 'index'])->name('domains');
-Route::get('/domains-{domain}', [DomainController::class, 'byDomain'])->name('domains.domain');
+Route::get('/domain-{domain}', [DomainController::class, 'byDomain'])->name('domain.domain');
 
 Route::middleware(['guest:' . config('fortify.guard')])->group(function () {
     Route::get('login/github', [LoginController::class, 'github'])->name('login.github');
