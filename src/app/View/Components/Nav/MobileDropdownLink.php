@@ -4,7 +4,7 @@ namespace App\View\Components\Nav;
 
 use Illuminate\View\Component;
 
-class MobileLink extends Component
+class MobileDropdownLink extends Component
 {
     private string $name;
     private string $route;
@@ -29,7 +29,7 @@ class MobileLink extends Component
      */
     public function render()
     {
-        return view('components.nav.mobile-link')->with([
+        return view('components.nav.mobile-dropdown-link')->with([
             'name' => $this->name,
             'route' => $this->route,
             'isActive' => $this->isActive,

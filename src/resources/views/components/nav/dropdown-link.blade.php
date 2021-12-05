@@ -1,6 +1,6 @@
 @if ($isActive)
     <a href="{{ $route }}"
-        {{ $attributes->merge(['class' => 'flex items-center py-1 font-bold text-gray-900']) }}>
+        {{ $attributes->merge(['class' => 'py-1 font-bold text-gray-900']) }}>
         {{ $name }}
     </a>
 @else

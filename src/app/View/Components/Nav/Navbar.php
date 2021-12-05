@@ -5,7 +5,7 @@ namespace App\View\Components\Nav;
 use App\Models\Domain;
 use Illuminate\View\Component;
 
-class Bar extends Component
+class Navbar extends Component
 {
     /**
      * Create a new component instance.
@@ -30,7 +30,7 @@ class Bar extends Component
         $domains->map(fn ($domain) => $domain['practices_count'] = $domain->practices()->published()->count());
         */
 
-        return view('components.nav.bar')->with([
+        return view('components.nav.navbar')->with([
             'domains' => $domains->get()
         ]);
     }

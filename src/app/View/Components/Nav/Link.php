@@ -2,8 +2,6 @@
 
 namespace App\View\Components\Nav;
 
-use Illuminate\Routing\Route;
-use Illuminate\Routing\Router;
 use Illuminate\View\Component;
 
 class Link extends Component

@@ -23,7 +23,7 @@
 
     <div class="min-h-screen bg-white">
         <header class="h-20 py-2">
-            <x-nav.bar />
+            <x-nav.navbar />
         </header>
 
         <!-- Page Content -->

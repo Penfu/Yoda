@@ -7,9 +7,9 @@
         <div class="flex items-center justify-between h-20">
 
             <!-- Mobile menu button-->
-            <div class="h-full flex items-center lg:hidden">
+            <div class="h-full w-full relative flex items-center lg:hidden ">
                 <button type="button" id="btn-mobile-menu"
-                    class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 focus:outline-none"
+                    class="z-20 inline-flex items-center justify-center p-2 rounded-md text-gray-700 focus:outline-none"
                     aria-controls="mobile-menu" aria-expanded="false">
                     <span class="sr-only">Open main menu</span>
                     <svg id="hamburger-mobile-menu" class="block h-10 w-10" xmlns="http://www.w3.org/2000/svg"
@@ -23,10 +23,15 @@
                             d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
+                <div class="absolute w-full text-center lg:hidden animate-fade-in-down ">
+                    <a href="{{ route('home') }}" class="uppercase font-bold text-2xl">
+                        {{ config('app.name') }}
+                    </a>
+                </div>
             </div>
 
             <!-- Standard menu -->
-            <div class="flex-1 flex items-center justify-center lg:items-stretch lg:justify-start h-full">
+            <div class="flex-1 flex items-center justify-center lg:items-stretch lg:justify-start h-full ">
                 <div class="hidden w-full h-full lg:flex space-x-4">
                     <x-nav.link name="Accueil" route="{{ route('home') }}" />
                     <x-nav.dropdown name="Domaines" route="{{ route('domains') }}" route-group="domain"
@@ -62,7 +67,16 @@
 
         <!-- Mobile menu, show/hide based on menu state. -->
         <div class="hidden lg:hidden w-full" id="mobile-menu">
-            <div class="px-2 py-4 space-y-1">
+            <div class="px-4 py-2 pb-8 space-y-1">
+                <x-nav.mobile-link name="Accueil" route="{{ route('home') }}" />
+                <x-nav.mobile-dropdown name="Domaines" route-group="domain">
+                    <x-nav.mobile-dropdown-link name="Toutes {{ $domains->sum('practices_count') }}"
+                        route="{{ route('domains') }}" />
+                    @foreach ($domains as $domain)
+                        <x-nav.mobile-dropdown-link name="{!! $domain->name !!} {{ $domain->practices_count }}"
+                            route="{{ route('domain.domain', ['domain' => $domain->slug]) }}" />
+                    @endforeach
+                </x-nav.mobile-dropdown>
             </div>
         </div>
     </nav>
