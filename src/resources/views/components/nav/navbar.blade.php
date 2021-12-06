@@ -2,7 +2,7 @@
     <script src="{{ mix('js/navbar.js') }}" defer></script>
 @endpush
 
-<div class="fixed top-0 inset-x-0 z-50 bg-white shadow-md">
+<div class="fixed top-0 inset-x-0 bg-white shadow-md">
     <nav class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
         <div class="flex items-center justify-between h-20">
 
