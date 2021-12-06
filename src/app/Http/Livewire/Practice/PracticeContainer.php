@@ -2,15 +2,15 @@
 
 namespace App\Http\Livewire\Practice;
 
-use App\Models\Practice;
-use Illuminate\Database\Eloquent\Collection;
 use Livewire\Component;
+use Illuminate\Database\Eloquent\Collection;
+use App\Models\Practice;
 
 class PracticeContainer extends Component
 {
     public Collection $practices;
-    public $domain;
-    public $days;
+    public            $domain;
+    public            $days;
 
     public function render()
     {
@@ -18,8 +18,10 @@ class PracticeContainer extends Component
 
         if (isset($this->days)) $practices->updatedSince($this->days);
         if (isset($this->domain)) $practices->ofDomain($this->domain->slug);
+        else $practices->with('domain'); // eager load domains
 
         $this->practices = $practices->get();
+
         return view('livewire.practice.practice-container');
     }
 }
