@@ -2,8 +2,8 @@
     <script src="{{ mix('js/navbar.js') }}" defer></script>
 @endpush
 
-<div class="fixed top-0 inset-x-0 z-50 shadow-md">
-    <nav class="max-w-7xl mx-auto px-8 sm:px-4 lg:px-8 bg-white">
+<div class="fixed top-0 inset-x-0 z-50 bg-white shadow-md">
+    <nav class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
         <div class="flex items-center justify-between h-20">
 
             <!-- Mobile menu button-->
@@ -77,6 +77,24 @@
                             route="{{ route('domain.domain', ['domain' => $domain->slug]) }}" />
                     @endforeach
                 </x-nav.mobile-dropdown>
+
+                <!-- Login !-->
+                <div class="flex w-full border-t text-center ">
+                    @auth
+                        <form method="POST" action="{{ route('logout') }}" class="flex items-center">
+                            @csrf
+                            <button type="submit"
+                                class="px-3 py-2 border-2 border-purple-500 hover:border-purple-400 rounded font-semibold text-purple-500 hover:text-purple-400">
+                                Se déconnecter
+                            </button>
+                        </form>
+                    @else
+                        <a href="{{ route('login') }}"
+                            class="w-full px-3 py-2 my-4 border-2 border-purple-500 hover:border-purple-400 rounded font-semibold uppercase text-purple-500 hover:text-purple-400">
+                            Se connecter
+                        </a>
+                    @endauth
+                </div>
             </div>
         </div>
     </nav>

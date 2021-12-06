@@ -21,7 +21,7 @@
 <body class="font-sans antialiased">
     <x-jet-banner />
 
-    <div class="min-h-screen bg-white">
+    <div class="min-h-screen bg-gray-100">
         <header class="h-20 py-2">
             <x-nav.navbar />
         </header>
