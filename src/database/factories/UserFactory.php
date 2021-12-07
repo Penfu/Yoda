@@ -25,7 +25,7 @@ class UserFactory extends Factory
      */
     public function definition()
     {
-        $firstName = $this->faker->firstName();
+        $firstName = $this->faker->unique()->firstName();
         return [
             'role_id' => Role::all()->random()->id,
             'name' => $firstName,
