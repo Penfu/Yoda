@@ -52,4 +52,14 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
+
+    public static function defaultRoleId(): int
+    {
+        return Role::whereSlug('MBR')->firstOrFail()->id;
+    }
 }

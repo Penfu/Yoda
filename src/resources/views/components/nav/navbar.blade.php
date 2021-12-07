@@ -47,6 +47,15 @@
                     <!-- Login !-->
                     <div class="flex w-full justify-end">
                         @auth
+                            <!-- User info !-->
+                            <div class="flex items-center mr-4">
+                                <span>Connecté en tant que</span><span>&nbsp</span>
+                                <span class="font-bold">{{ Auth::user()->fullname }}</span>
+                                <span>&nbsp</span><span>alias</span><span>&nbsp</span>
+                                <span class="font-bold">{{ Auth::user()->name }}</span>
+                            </div>
+
+                            <!-- Logout !-->
                             <form method="POST" action="{{ route('logout') }}" class="flex items-center">
                                 @csrf
                                 <button type="submit"
@@ -58,6 +67,10 @@
                             <a href="{{ route('login') }}"
                                 class="flex items-center px-3 py-1 my-4 border-2 border-purple-500 hover:border-purple-400 rounded font-semibold text-purple-500 hover:text-purple-400">
                                 Se connecter
+                            </a>
+                            <a href="{{ route('register') }}"
+                                class="flex items-center px-3 py-1 ml-2 my-4 border-2 border-purple-500 hover:border-purple-400 rounded font-semibold text-purple-500 hover:text-purple-400">
+                                S'inscrire
                             </a>
                         @endauth
                     </div>
@@ -79,19 +92,31 @@
                 </x-nav.mobile-dropdown>
 
                 <!-- Login !-->
-                <div class="flex w-full border-t text-center ">
+                <div class="flex flex-col md:flex-row w-full border-t text-center ">
                     @auth
-                        <form method="POST" action="{{ route('logout') }}" class="flex items-center">
+                        <!-- User info !-->
+                        <div class="flex items-center py-2">
+                            <div>
+                                <span>Connecté en tant que </span><span
+                                    class="font-bold">{{ Auth::user()->fullname }}</span>
+                                <span>alias </span><span class="font-bold">{{ Auth::user()->name }}</span>
+                            </div>
+                        </div>
+                        <form method="POST" action="{{ route('logout') }}" class="py-2">
                             @csrf
                             <button type="submit"
-                                class="px-3 py-2 border-2 border-purple-500 hover:border-purple-400 rounded font-semibold text-purple-500 hover:text-purple-400">
+                                class="w-full px-3 py-2 border-2 border-purple-500 hover:border-purple-400 rounded font-semibold text-purple-500 hover:text-purple-400">
                                 Se déconnecter
                             </button>
                         </form>
                     @else
                         <a href="{{ route('login') }}"
-                            class="w-full px-3 py-2 my-4 border-2 border-purple-500 hover:border-purple-400 rounded font-semibold uppercase text-purple-500 hover:text-purple-400">
+                            class="w-full px-3 py-2 mt-4 md:mr-2 border-2 border-purple-500 hover:border-purple-400 rounded font-semibold uppercase text-purple-500 hover:text-purple-400">
                             Se connecter
+                        </a>
+                        <a href="{{ route('register') }}"
+                            class="w-full px-3 py-2 mt-4 md:ml-2 border-2 border-purple-500 hover:border-purple-400 rounded font-semibold uppercase text-purple-500 hover:text-purple-400">
+                            S'inscrire
                         </a>
                     @endauth
                 </div>

@@ -35,3 +35,5 @@ Route::middleware(['guest:' . config('fortify.guard')])->group(function () {
     Route::get('login/github', [LoginController::class, 'github'])->name('login.github');
     Route::get('login/github/callback', [LoginController::class, 'githubCallback']);
 });
+
+require __DIR__.'/auth.php';
