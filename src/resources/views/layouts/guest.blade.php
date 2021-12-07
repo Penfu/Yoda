@@ -19,8 +19,6 @@
 </head>
 
 <body class="font-sans antialiased">
-    <x-jet-banner />
-
     <div class="flex flex-col min-h-screen bg-gray-50">
         <header class="flex z-50 h-20 py-2">
             <x-nav.navbar />
