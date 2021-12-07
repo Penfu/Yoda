@@ -42,6 +42,6 @@ class Practice extends Model
 
     public function isPublished(): bool
     {
-        return $this->publicationState->slug == 'PUB' ? true : false;
+        return $this->publicationState->slug == 'PUB';
     }
 }
