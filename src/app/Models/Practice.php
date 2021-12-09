@@ -25,6 +25,11 @@ class Practice extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function opinions()
+    {
+        return $this->hasMany(Opinion::class);
+    }
+    
     public function scopeUpdatedSince($query, string $days)
     {
         return $query->where('updated_at', '>=', Carbon::now()->subDays((int)$days)->toDateTimeString());

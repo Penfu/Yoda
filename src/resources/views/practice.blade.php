@@ -1,28 +1,53 @@
 <x-app-layout>
     <div class="max-w-7xl mx-auto pt-8 px-4 sm:px-6 lg:px-8">
-        <a href="{{ URL::previous() }}" class="px-2 py-1 bg-gray-300 hover:bg-gray-400 rounded-sm">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block -mt-1" fill="none" viewBox="0 0 24 24"
-                stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18" />
-            </svg>
-            <span class="inline-block">Retour</span>
-        </a>
-        <div class="py-4">
-            <h2 class="my-2 font-bold text-xl">{{ $practice->domain->name }}</h2>
-            <p class="my-2 flex-grow">{{ $practice->description }}</p>
+        <div class="">
+            <a href="{{ route('domain.domain', ['domain' => $practice->domain->slug]) }}" class="group inline-block">
+                <div class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                        class="hidden group-hover:flex h-11 w-11 mr-1 group-hover:border-r-4 border-purple-500 animate-fade-in-left"
+                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M11 17l-5-5m0 0l5-5m-5 5h12" />
+                    </svg>
+                    <h1 class="text-6xl font-bold uppercase">{{ $practice->domain->name }}</h1>
+                </div>
+            </a>
 
-            <div>
+            <p class="my-4 text-lg">{{ $practice->description }}</p>
+
+            <div class="inline-block px-2 py-1 mr-1 bg-gray-200 rounded-md">
                 <span>Créé le</span>
-                <span> {{ $practice->created_at->translatedFormat('j F Y') }}</span>
+                <span>{{ $practice->created_at->translatedFormat('j F Y') }}</span>
             </div>
-            <div>
+            <div class="inline-block px-2 py-1 mr-1 bg-gray-200 rounded-md">
                 <span>Modifié le</span>
-                <span> {{ $practice->updated_at->translatedFormat('j F Y') }}</span>
+                <span>{{ $practice->updated_at->translatedFormat('j F Y') }}</span>
             </div>
-            <div>
-                <span>Auteur</span>
+            <a href="#"
+                class="inline-block px-2 py-1 mr-1 bg-purple-200 rounded-md text-purple-600 hover:text-purple-500">
                 <span>{{ $practice->user->fullname }}</span>
+            </a>
+
+            <!-- Opinions !-->
+            <div class="mt-8">
+                <h3 class="py-2 font-bold text-2xl uppercase">Opinions</h3>
+                <div class="flex flex-col">
+                    @forelse ($practice->opinions as $opinion)
+                        <div class="py-4 border-t border-gray-200">
+                            <p class="inline-block">{{ $opinion->description }}</p>
+                            <a href="#" class="inline-block text-purple-600 hover:text-purple-400">
+                                {{ $opinion->user->name }}
+                            </a>
+                            <span class="inline-block text-gray-500">
+                                {{ $opinion->created_at->translatedFormat('d.m.y - h\hm') }}
+                            </span>
+                        </div>
+                    @empty
+                        <p>Aucune opinion pour le moment.</p>
+                    @endforelse
+                </div>
             </div>
         </div>
+    </div>
     </div>
 </x-app-layout>
