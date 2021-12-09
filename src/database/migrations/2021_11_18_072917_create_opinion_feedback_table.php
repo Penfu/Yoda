@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserOpinionTable extends Migration
+class CreateOpinionFeedbackTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateUserOpinionTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_opinion', function (Blueprint $table) {
+        Schema::create('opinion_feedback', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('opinion_id')->constrained('opinions')->onDelete('cascade');
-            $table->string('comment', 5000);
-            $table->integer('points');
+            $table->string('comment', 1000)->nullable();
+            $table->integer('points')->default(0);
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateUserOpinionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_opinion');
+        Schema::dropIfExists('opinion_feedback');
     }
 }

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Opinion extends Model
+class OpinionFeedback extends Model
 {
     use HasFactory;
 
@@ -14,8 +14,8 @@ class Opinion extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function feedbacks()
+    public function opinion()
     {
-        return $this->hasMany(OpinionFeedback::class);
+        return $this->belongsTo(Opinion::class);
     }
 }
