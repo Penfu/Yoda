@@ -17,7 +17,7 @@
 
                 <!-- Fullname -->
                 <div class="mt-4">
-                    <x-label for="fullname" :value="__('Fullname')" />
+                    <x-label for="fullname" :value="__('Full name')" />
                     <x-input id="fullname" class="block mt-1 w-full" type="text" name="fullname" :value="old('fullname')"
                         required />
                 </div>

@@ -48,9 +48,9 @@
                     </x-button>
                 </div>
                 <div class="flex flex-col gap-y-2 mt-4 text-center">
-                    <a href="{{ route('login.github') }}" class="px-4 py-2 w-full bg-gray-800 rounded text-white">Log
-                        in
-                        with GitHub</a>
+                    <a href="{{ route('login.github') }}" class="px-4 py-2 w-full bg-gray-800 rounded text-white">
+                        {{ __('Log in with GitHub') }}
+                    </a>
                 </div>
             </form>
         </div>
