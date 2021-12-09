@@ -14,6 +14,6 @@ class OpinionFeedbackSeeder extends Seeder
      */
     public function run()
     {
-        OpinionFeedback::factory(50)->create();
+        OpinionFeedback::factory(500)->create();
     }
 }

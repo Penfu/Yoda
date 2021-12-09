@@ -18,4 +18,9 @@ class OpinionFeedback extends Model
     {
         return $this->belongsTo(Opinion::class);
     }
+
+    public function scopeCommented($query)
+    {
+        return $query->where('comment', '<>', '');
+    }
 }
