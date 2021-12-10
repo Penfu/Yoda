@@ -15,6 +15,7 @@ const tailwindcss = require('tailwindcss')
 mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/navbar.js', 'public/js')
     .js('resources/js/navMobileDropdown.js', 'public/js')
+    .js('resources/js/accordion.js', 'public/js/app.js')
 
     .sass('resources/sass/app.scss', 'public/css')
     .options({

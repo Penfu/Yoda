@@ -2,11 +2,14 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
     mode: 'jit',
-    purge: [
-        './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
-        './storage/framework/views/*.php',
-        './resources/views/**/*.blade.php'
-    ],
+    purge: {
+        content: [
+            './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
+            './storage/framework/views/*.php',
+            './resources/views/**/*.blade.php'
+        ],
+        safelist: ['rotate-180']
+    },
     theme: {
         extend: {
             fontFamily: {
@@ -35,10 +38,10 @@ module.exports = {
                 },
                 'drop-down': {
                     '0%': {
-                        opacity: '0',
+                        opacity: '0'
                     },
                     '100%': {
-                        opacity: '1',
+                        opacity: '1'
                     }
                 }
             },

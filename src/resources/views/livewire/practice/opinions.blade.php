@@ -10,7 +10,7 @@
 
     <div class="flex flex-col pb-8 space-y-8">
         @forelse ($opinions as $opinion)
-            <livewire:practice.opinion :opinion="$opinion" />
+            <livewire:practice.opinion :opinion="$opinion" :wire:key="$opinion->id" />
         @empty
             <p>Aucune opinion pour le moment.</p>
         @endforelse
