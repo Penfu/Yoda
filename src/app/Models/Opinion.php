@@ -18,4 +18,9 @@ class Opinion extends Model
     {
         return $this->hasMany(OpinionFeedback::class);
     }
+
+    public function points()
+    {
+        return $this->feedbacks->sum('points');
+    }
 }
