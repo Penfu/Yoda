@@ -5,7 +5,7 @@
             <h2 class="my-2 font-bold text-xl text-gray-900 uppercase">{{ $practice->domain->name }}</h2>
         @endempty
 
-        <p class="my-2 flex-grow text-gray-700 group-hover:text-gray-900">{{ Str::of($practice->description)->words(35) }}</p>
+        <p class="my-2 grow text-gray-700 group-hover:text-gray-900">{{ Str::of($practice->description)->words(35) }}</p>
         <span class="justify-self-end text-right italic">
             Modifié le {{ $practice->updated_at->translatedFormat('j F Y') }}
         </span>

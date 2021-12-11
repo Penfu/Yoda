@@ -25,7 +25,7 @@
         </header>
 
         <!-- Page Content -->
-        <main class="flex flex-grow z-10">
+        <main class="flex grow z-10">
             {{ $slot }}
         </main>
     </div>
