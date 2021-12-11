@@ -3,13 +3,14 @@
         <!-- Domain -->
         <a href="{{ route('domain.domain', ['domain' => $practice->domain->slug]) }}" class="group inline-block">
             <div class="flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg"
-                    class="hidden group-hover:flex h-11 w-11 mr-1 group-hover:border-r-4 border-purple-500 animate-fade-in-left"
-                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" class="md:h-12 w-0 md:group-hover:w-12 duration-500" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M11 17l-5-5m0 0l5-5m-5 5h12" />
                 </svg>
-                <h1 class="text-6xl font-bold uppercase">{{ $practice->domain->name }}</h1>
+                <!--- Split line -->
+                <div class="my-2 self-stretch border-purple-500 group-hover:border-l-4 duration-100"></div>
+                <h1 class="text-6xl font-bold uppercase duration-500">{{ $practice->domain->name }}</h1>
             </div>
         </a>
 
@@ -31,6 +32,6 @@
         </div>
 
         <livewire:practice.opinions :opinions="$practice->opinions" />
-      
+
     </div>
 </x-app-layout>
