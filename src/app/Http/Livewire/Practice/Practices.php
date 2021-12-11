@@ -6,7 +6,7 @@ use Livewire\Component;
 use Illuminate\Database\Eloquent\Collection;
 use App\Models\Practice;
 
-class PracticeContainer extends Component
+class Practices extends Component
 {
     public Collection $practices;
     public            $domain;
@@ -22,6 +22,6 @@ class PracticeContainer extends Component
 
         $this->practices = $practices->get();
 
-        return view('livewire.practice.practice-container');
+        return view('livewire.practice.practices');
     }
 }

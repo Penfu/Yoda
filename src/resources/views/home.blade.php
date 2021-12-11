@@ -15,7 +15,7 @@
         </div>
 
         <div class="py-12">
-            <livewire:practice.practice-container :days="$days" />
+            <livewire:practice.practices :days="$days" />
         </div>
     </div>
 </x-app-layout>
