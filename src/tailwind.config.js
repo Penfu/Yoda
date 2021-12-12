@@ -13,6 +13,14 @@ module.exports = {
                 sans: ['Roboto', 'sans-serif']
             },
             keyframes: {
+                fade: {
+                    '0%': {
+                        opacity: '0'
+                    },
+                    '100%': {
+                        opacity: '1'
+                    }
+                },
                 'fade-in-left': {
                     '0%': {
                         opacity: '0',
@@ -43,6 +51,7 @@ module.exports = {
                 }
             },
             animation: {
+                'fast-fade': 'fade 0.25s ease-in-out',
                 'fade-in-left': 'fade-in-left 0.5s ease-out',
                 'fade-in-down': 'fade-in-down 0.5s ease-out',
                 'drop-down': 'drop-down 0.15s ease-out'

@@ -9,6 +9,7 @@ class PracticeController extends Controller
     public function index($practice)
     {
         $practice = Practice::with(['opinions', 'opinions.feedbacks'])->findOrFail($practice);
+        session(['url.intended' => url()->current()]);
 
         return view('practice')->with('practice', $practice);
     }

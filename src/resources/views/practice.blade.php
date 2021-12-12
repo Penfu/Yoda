@@ -1,7 +1,7 @@
 <x-app-layout>
     <div class="max-w-7xl mx-auto pt-8 px-4 sm:px-6 lg:px-8">
         <!-- Domain -->
-        <a href="{{ route('domain.domain', ['domain' => $practice->domain->slug]) }}" class="group inline-block">
+        <a href="{{ route('domain', ['domain' => $practice->domain->slug]) }}" class="group inline-block">
             <div class="flex items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" class="md:h-12 w-0 md:group-hover:w-12 duration-500" fill="none"
                     viewBox="0 0 24 24" stroke="currentColor">
@@ -26,12 +26,12 @@
                 <span>{{ $practice->updated_at->translatedFormat('j F Y') }}</span>
             </div>
             <a href="#"
-                class="inline-block mr-1 my-1 px-2 py-1 bg-purple-200 rounded-md text-purple-600 hover:text-purple-500">
+                class="inline-block mr-1 my-1 px-2 py-1 bg-purple-200 rounded-md text-purple-500 hover:text-purple-600 duration-300">
                 <span>{{ $practice->user->fullname }}</span>
             </a>
         </div>
 
-        <livewire:practice.opinions :opinions="$practice->opinions" />
+        <livewire:practice.opinions :practice="$practice" />
 
     </div>
 </x-app-layout>

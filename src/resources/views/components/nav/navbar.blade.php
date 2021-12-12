@@ -40,7 +40,7 @@
                             route="{{ route('domains') }}" />
                         @foreach ($domains as $domain)
                             <x-nav.dropdown-link name="{!! $domain->name !!} {{ $domain->practices_count }}"
-                                route="{{ route('domain.domain', ['domain' => $domain->slug]) }}" />
+                                route="{{ route('domain', ['domain' => $domain->slug]) }}" />
                         @endforeach
                     </x-nav.dropdown>
 
@@ -87,7 +87,7 @@
                         route="{{ route('domains') }}" />
                     @foreach ($domains as $domain)
                         <x-nav.mobile-dropdown-link name="{!! $domain->name !!} {{ $domain->practices_count }}"
-                            route="{{ route('domain.domain', ['domain' => $domain->slug]) }}" />
+                            route="{{ route('domain', ['domain' => $domain->slug]) }}" />
                     @endforeach
                 </x-nav.mobile-dropdown>
 

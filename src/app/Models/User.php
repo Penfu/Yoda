@@ -60,4 +60,9 @@ class User extends Authenticatable
     {
         return Role::whereSlug('MBR')->firstOrFail()->id;
     }
+
+    public function opinions()
+    {
+        return $this->hasMany(Opinion::class);
+    }
 }

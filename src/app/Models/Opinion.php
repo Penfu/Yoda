@@ -9,6 +9,12 @@ class Opinion extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'description',
+        'practice_id',
+        'user_id',
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);

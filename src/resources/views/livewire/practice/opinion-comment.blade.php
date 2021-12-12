@@ -1,7 +1,7 @@
-<div class="py-4 transition-all duration-200"
+<div class="py-4">
     <span>
         <p class="inline">{{ $comment->comment }}</p>
-        <a href="#" class="text-purple-600 hover:text-purple-400">
+        <a href="#" class="text-purple-500 hover:text-purple-600 duration-300">
             {{ $comment->user->name }}
         </a>
         <span class="text-gray-500">
