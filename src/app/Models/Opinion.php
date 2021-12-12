@@ -29,4 +29,9 @@ class Opinion extends Model
     {
         return $this->feedbacks->sum('points');
     }
+
+    public function comments()
+    {
+        return $this->feedbacks->where('comment', '!=', '');
+    }
 }

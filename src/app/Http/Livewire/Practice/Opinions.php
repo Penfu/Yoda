@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Practice;
 
+use App\Models\Opinion;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
@@ -11,6 +12,8 @@ class Opinions extends Component
     public $opinions;
     public $userOpinion;
     public $description;
+
+    protected $listeners = ['delete'];
 
     protected $rules = [
         'description' => 'required|string|max:5000',
@@ -37,10 +40,20 @@ class Opinions extends Component
             'description' => $validated['description'],
             'user_id' => auth()->user()->id,
         ]);
-
         $this->opinions = $this->practice->opinions()->get();
 
         session()->flash('opinion-status', 'Votre opinion a bien été enregistrée.');
+    }
+
+    public function delete(Opinion $opinion)
+    {
+        $opinion->delete();
+
+        $this->opinions = $this->practice->opinions()->get();
+        unset($this->userOpinion);
+        unset($this->description);
+
+        $this->validateOnly('description');
     }
 
     public function render()

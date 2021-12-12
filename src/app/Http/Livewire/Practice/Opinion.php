@@ -8,6 +8,11 @@ class Opinion extends Component
 {
     public $opinion;
 
+    public function delete()
+    {
+        $this->emit('delete', $this->opinion);
+    }
+
     public function render()
     {
         return view('livewire.practice.opinion');
