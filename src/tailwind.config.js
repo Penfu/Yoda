@@ -48,13 +48,21 @@ module.exports = {
                     '100%': {
                         opacity: '1'
                     }
+                },
+                'w-grow': {
+                    '0%': {
+                        width: '0%'
+                    },
+                    '100%': {
+                        width: '100%'
+                    }
                 }
             },
             animation: {
                 'fast-fade': 'fade 0.25s ease-in-out',
                 'fade-in-left': 'fade-in-left 0.5s ease-out',
                 'fade-in-down': 'fade-in-down 0.5s ease-out',
-                'drop-down': 'drop-down 0.15s ease-out'
+                'drop-down': 'drop-down 0.15s ease-out',
             }
         }
     },

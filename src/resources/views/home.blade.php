@@ -8,7 +8,7 @@
                 consequuntur, deserunt quas similique magni possimus.
             </p>
             <div class="pt-2">
-                <a href="{{ route('domains') }}" class="px-4 py-2 bg-purple-500 text-white rounded shadow-xl">
+                <a href="{{ route('domains') }}" class="px-4 py-2 bg-purple-500 hover:bg-purple-600 rounded shadow shadow-purple-400 text-white">
                     En voir plus
                 </a>
             </div>

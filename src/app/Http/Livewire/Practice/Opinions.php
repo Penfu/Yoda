@@ -23,8 +23,6 @@ class Opinions extends Component
     {
         $this->opinions = $practice->opinions;
         $this->userOpinion = $practice->opinions->where('user_id', Auth::id())->first();
-
-        $this->validateOnly('description');
     }
 
     public function updated($property)
@@ -42,7 +40,7 @@ class Opinions extends Component
         ]);
         $this->opinions = $this->practice->opinions()->get();
 
-        session()->flash('opinion-status', 'Votre opinion a bien été enregistrée.');
+        session()->now('alert', 'Votre opinion a bien été enregistrée.');
     }
 
     public function delete(Opinion $opinion)
@@ -53,7 +51,7 @@ class Opinions extends Component
         unset($this->userOpinion);
         unset($this->description);
 
-        $this->validateOnly('description');
+        session()->now('alert', 'Votre opinion a bien été supprimée.');
     }
 
     public function render()

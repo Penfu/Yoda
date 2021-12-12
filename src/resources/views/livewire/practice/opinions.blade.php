@@ -17,6 +17,9 @@
             @empty
                 <p>Aucune opinion pour le moment.</p>
             @endforelse
+            @if (session()->has('alert'))
+                <x-alert :message="session('alert')" delay="5" />
+            @endif
         </div>
     </div>
 
@@ -32,8 +35,9 @@
                         <span
                             class="inline-block my-1 py-1 px-2 rounded shadow font-semibold text-gray-800 {{ $errors->has('description') ? 'bg-red-200 shadow-red-300' : 'bg-emerald-200 shadow-emerald-300' }}">
                             {{ strlen($description) }} / 5000
-                            <svg xmlns="http://www.w3.org/2000/svg" class="inline-block h-4 w-4 -mt-3 -mr-1 text-gray-800"
-                                viewBox="0 0 20 20" fill="currentColor">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="inline-block h-4 w-4 -mt-3 -mr-1 font-normal text-gray-700" viewBox="0 0 20 20"
+                                fill="currentColor">
                                 <path fill-rule="evenodd"
                                     d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
                                     clip-rule="evenodd" />
@@ -64,22 +68,5 @@
                 <span>afin de voir ou partager votre opinon sur cette pratique.</span>
             @endif
         @endisset
-        @if (session()->has('opinion-status'))
-            <div x-data="{ show: true }" x-show="show"
-                class="flex items-center p-4 bg-emerald-100 rounded font-semibold text-emerald-500" role="alert">
-                <svg class="w-6 h-6 mr-2" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    viewBox="0 0 24 24" stroke="currentColor">
-                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-                <span class="grow">{{ session('opinion-status') }}</span>
-                <button type="button" data-dismiss="alert" aria-label="Close" @click="show = false">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
-            </div>
-        @endif
     </div>
 </div>
