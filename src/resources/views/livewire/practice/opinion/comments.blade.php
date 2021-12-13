@@ -14,5 +14,6 @@
         @foreach ($comments as $comment)
             <livewire:practice.opinion.comment :comment="$comment" :wire:key="$comment->id" />
         @endforeach
+        <livewire:practice.opinion.comment-form />
     </div>
 </div>
