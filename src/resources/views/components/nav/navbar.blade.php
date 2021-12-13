@@ -51,7 +51,7 @@
                             <div class="flex items-center mr-4">
                                 <span>Connecté en tant que</span><span>&nbsp</span>
                                 <span class="font-bold">{{ Auth::user()->fullname }}</span>
-                                <span>&nbsp</span><span>alias</span><span>&nbsp</span>
+                                <span>&nbsp</span><span>~</span><span>&nbsp</span>
                                 <span class="font-bold">{{ Auth::user()->name }}</span>
                             </div>
 
@@ -97,9 +97,10 @@
                         <!-- User info !-->
                         <div class="flex items-center py-2">
                             <div>
-                                <span>Connecté en tant que </span><span
-                                    class="font-bold">{{ Auth::user()->fullname }}</span>
-                                <span>alias </span><span class="font-bold">{{ Auth::user()->name }}</span>
+                                <span>Connecté en tant que</span>
+                                <span class="font-bold">{{ Auth::user()->fullname }}</span>
+                                <span>~</span>
+                                <span class="font-bold">{{ Auth::user()->name }}</span>
                             </div>
                         </div>
                         <form method="POST" action="{{ route('logout') }}" class="py-2">
