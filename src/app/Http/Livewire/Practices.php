@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Practice;
+namespace App\Http\Livewire;
 
 use Livewire\Component;
 use Illuminate\Database\Eloquent\Collection;
@@ -22,6 +22,6 @@ class Practices extends Component
 
         $this->practices = $practices->get();
 
-        return view('livewire.practice.practices');
+        return view('livewire.practices');
     }
 }

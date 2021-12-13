@@ -12,7 +12,7 @@
 
     <div class="accordion-content hidden px-4 divide-y-4 divide-gray-200">
         @foreach ($comments as $comment)
-            <livewire:practice.opinion-comment :comment="$comment" :wire:key="$comment->id" />
+            <livewire:practice.opinion.comment :comment="$comment" :wire:key="$comment->id" />
         @endforeach
     </div>
 </div>
