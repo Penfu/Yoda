@@ -18,7 +18,7 @@
                 <p>Aucune opinion pour le moment.</p>
             @endforelse
             @if (session()->has('alert'))
-                <x-alert :message="session('alert')" delay="5" />
+                <x-alert :message="session('alert')" />
             @endif
         </div>
     </div>
@@ -31,6 +31,7 @@
             @if (Auth::check())
                 <form wire:submit.prevent="post">
                     @csrf
+                    <!-- Description char count -->
                     <div class="inline-block group my-2 select-none hover:cursor-help">
                         <span
                             class="inline-block my-1 py-1 px-2 rounded shadow font-semibold text-gray-800 {{ $errors->has('description') ? 'bg-red-200 shadow-red-300' : 'bg-emerald-200 shadow-emerald-300' }}">

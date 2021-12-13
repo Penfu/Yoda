@@ -17,7 +17,6 @@ class Alert extends Component
     public function __construct(string $message, int $delay = 0)
     {
         $this->message = $message;
-        $this->delay = $delay;
     }
 
     /**
@@ -29,7 +28,6 @@ class Alert extends Component
     {
         return view('components.alert')->with([
             'message' => $this->message,
-            'delay' => $this->delay,
         ]);
     }
 }

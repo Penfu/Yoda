@@ -21,6 +21,7 @@ class Opinions extends Component
 
     public function mount($practice)
     {
+        $this->practice = $practice;
         $this->opinions = $practice->opinions;
         $this->userOpinion = $practice->opinions->where('user_id', Auth::id())->first();
     }
@@ -36,9 +37,10 @@ class Opinions extends Component
 
         $this->userOpinion = $this->practice->opinions()->create([
             'description' => $validated['description'],
-            'user_id' => auth()->user()->id,
+            'user_id'     => auth()->user()->id,
         ]);
-        $this->opinions = $this->practice->opinions()->get();
+
+        $this->opinions->push($this->userOpinion);
 
         session()->now('alert', 'Votre opinion a bien été enregistrée.');
     }
@@ -46,10 +48,10 @@ class Opinions extends Component
     public function delete(Opinion $opinion)
     {
         $opinion->delete();
-
         $this->opinions = $this->practice->opinions()->get();
-        unset($this->userOpinion);
-        unset($this->description);
+
+        $this->reset('userOpinion');
+        $this->reset('description');
 
         session()->now('alert', 'Votre opinion a bien été supprimée.');
     }

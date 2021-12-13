@@ -34,4 +34,12 @@ class Opinion extends Model
     {
         return $this->feedbacks->where('comment', '!=', '');
     }
+
+    public function vote(int $points)
+    {
+        $this->feedbacks()->updateOrCreate(
+            ['user_id' => auth()->id()],
+            ['points' => $points]
+        );
+    }
 }
