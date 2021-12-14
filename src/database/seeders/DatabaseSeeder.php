@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             ReferenceSeeder::class,
             OpinionReferenceSeeder::class,
             OpinionFeedbackSeeder::class,
+            CommentSeeder::class,
         ]);
     }
 }

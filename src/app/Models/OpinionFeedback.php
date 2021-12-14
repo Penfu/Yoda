@@ -9,10 +9,10 @@ class OpinionFeedback extends Model
 {
     use HasFactory;
 
+    protected $table = 'opinion_feedbacks';
     protected $fillable = [
         'opinion_id',
         'user_id',
-        'comment',
         'points',
     ];
 
@@ -26,8 +26,8 @@ class OpinionFeedback extends Model
         return $this->belongsTo(Opinion::class);
     }
 
-    public function scopeCommented($query)
+    public function comments()
     {
-        return $query->where('comment', '<>', '');
+        return $this->hasMany(Comment::class);
     }
 }

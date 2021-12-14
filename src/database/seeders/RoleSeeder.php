@@ -14,11 +14,9 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        Role::insert(
-            [
-                ['name' => 'Membre', 'slug' => 'MBR'],
-                ['name' => 'Modérateur', 'slug' => 'MOD']
-            ]
-        );
+        Role::insert([
+            ['name' => 'Membre',     'slug' => 'MBR'],
+            ['name' => 'Modérateur', 'slug' => 'MOD']
+        ]);
     }
 }

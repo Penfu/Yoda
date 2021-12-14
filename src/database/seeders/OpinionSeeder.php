@@ -43,11 +43,11 @@ class OpinionSeeder extends Seeder
             "Que vous n'en eussiez pas articulé le quart De la moitié du commencement d'une, car Je me les sers moi-même, avec assez de verve, Mais je ne permets pas qu'un autre me les serve.",
             "J'adore votre système. Je ne peux tout simplement pas en avoir assez des meilleures pratiques. Je veux obtenir un t-shirt avec les meilleures pratiques dessus afin que je puisse le montrer à tout le monde",
             "Nous avons utilisé les meilleures pratiques au cours des cinq dernières années. Mec, ton truc c'est de la bombe ! Je tiens également à remercier tout votre personnel. Les meilleures pratiques devraient être nominées pour le service de l'année.",
-            ] as $opinion) {
+        ] as $opinion) {
             Opinion::create([
                 'description' => $opinion,
                 'practice_id' => Practice::all()->random()->id,
-                'user_id' => User::all()->random()->id
+                'user_id'     => User::all()->random()->id
             ]);
         }
 
