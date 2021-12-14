@@ -5,16 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class OpinionFeedback extends Model
+class OpinionComment extends Model
 {
     use HasFactory;
 
-    protected $table = 'opinion_feedbacks';
-    protected $fillable = [
-        'opinion_id',
-        'user_id',
-        'points',
-    ];
+    protected $table = 'opinion_comments';
 
     public function user()
     {

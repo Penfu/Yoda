@@ -81,6 +81,6 @@
 
     <!-- Comments !-->
     <div class="mt-8">
-        <livewire:practice.opinion.comments :comments="$opinion->comments()" />
+        <livewire:practice.opinion.comments :comments="$opinion->comments()->get()" />
     </div>
 </div>

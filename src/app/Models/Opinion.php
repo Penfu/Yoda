@@ -15,6 +15,11 @@ class Opinion extends Model
         'user_id',
     ];
 
+    public function practice()
+    {
+        return $this->belongsTo(Practice::class);
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -25,14 +30,14 @@ class Opinion extends Model
         return $this->hasMany(OpinionFeedback::class);
     }
 
-    public function points()
-    {
-        return $this->feedbacks->sum('points');
-    }
-
     public function comments()
     {
-        return $this->feedbacks->where('comment', '!=', '');
+        return $this->hasMany(OpinionComment::class);
+    }
+
+    public function points()
+    {
+        return $this->feedbacks()->sum('points');
     }
 
     public function vote(int $points)
