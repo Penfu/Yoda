@@ -9,8 +9,6 @@ class OpinionComment extends Model
 {
     use HasFactory;
 
-    protected $table = 'opinion_comments';
-
     public function user()
     {
         return $this->belongsTo(User::class);
