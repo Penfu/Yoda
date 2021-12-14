@@ -63,10 +63,12 @@
                     </button>
                 </form>
             @else
-                <span>Veuillez vous</span>
-                <a href="{{ route('login') }}" class="text-purple-500 hover:text-purple-600 duration-300">connecter à
-                    votre compte</a>
-                <span>afin de voir ou partager votre opinon sur cette pratique.</span>
+                <span id="my-opinion">Veuillez vous
+                    <a href="{{ route('login') }}" class="text-purple-500 hover:text-purple-600 duration-300">
+                        connecter à votre compte
+                    </a>
+                    afin de partager votre opinon sur cette pratique.
+                </span>
             @endif
         @endisset
     </div>

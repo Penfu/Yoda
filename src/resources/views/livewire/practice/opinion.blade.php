@@ -1,5 +1,5 @@
 <div id="{{ $opinion->user == Auth::user() ? 'my-opinion' : null }}"
-    class="px-4 py-4 bg-gray-100 rounded shadow-sm outline-4 outline-purple-400 target:outline-dashed animate-fade-in-down">
+    class="px-4 py-4 bg-gray-100 rounded shadow-sm outline-4 outline-dashed outline-transparent target:animate-target {{ $opinion->user == Auth::user() ? 'animate-target' : null }} animate-fade-in-down">
     <div class="flex items-stretch">
         <!-- Vote -->
         <div class="flex flex-col items-center mr-8 text-center space-y-2">
@@ -81,6 +81,6 @@
 
     <!-- Comments !-->
     <div class="mt-8">
-        <livewire:practice.opinion.comments :comments="$opinion->comments()->get()" />
+        <livewire:practice.opinion.comments :opinion="$opinion" :comments="$opinion->comments()->get()" />
     </div>
 </div>

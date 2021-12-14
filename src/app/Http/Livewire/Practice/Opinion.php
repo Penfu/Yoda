@@ -48,7 +48,7 @@ class Opinion extends Component
 
     public function delete()
     {
-        $this->emit('delete', $this->opinion);
+        $this->emitTo('practice.opinions', 'deleteOpinion', $this->opinion);
     }
 
     public function render()

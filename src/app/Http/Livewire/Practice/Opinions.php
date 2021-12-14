@@ -3,7 +3,6 @@
 namespace App\Http\Livewire\Practice;
 
 use App\Models\Opinion;
-use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class Opinions extends Component
@@ -13,7 +12,7 @@ class Opinions extends Component
     public $userOpinion;
     public $description;
 
-    protected $listeners = ['delete'];
+    protected $listeners = ['deleteOpinion' => 'delete'];
 
     protected $rules = [
         'description' => 'required|string|max:5000',
@@ -23,7 +22,7 @@ class Opinions extends Component
     {
         $this->practice = $practice;
         $this->opinions = $practice->opinions;
-        $this->userOpinion = $practice->opinions->where('user_id', Auth::id())->first();
+        $this->userOpinion = $practice->opinions->where('user_id', auth()->id())->first();
     }
 
     public function updated($property)
@@ -33,11 +32,11 @@ class Opinions extends Component
 
     public function post()
     {
-        $validated = $this->validate();
+        $validation = $this->validate();
 
         $this->userOpinion = $this->practice->opinions()->create([
-            'description' => $validated['description'],
-            'user_id'     => auth()->user()->id,
+            'description' => $validation['description'],
+            'user_id'     => auth()->id(),
         ]);
 
         $this->opinions->push($this->userOpinion);

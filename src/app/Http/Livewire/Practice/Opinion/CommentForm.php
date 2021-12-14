@@ -6,18 +6,26 @@ use Livewire\Component;
 
 class CommentForm extends Component
 {
+    public $opinion;
     public $comment;
+
+    protected $rules = [
+        'comment' => 'required|string|max:1000',
+    ];
 
     public function post()
     {
-        dd($this->comment);
-        
-        $this->validate([
-            'comment' => 'required|min:3',
+        $validation = $this->validate([
+            'comment' => 'required|string|max:1000',
         ]);
 
-        $this->emit('commentAdded', $this->comment);
-        $this->comment->refresh();
+        $this->opinion->comments()->create([
+            'user_id' => auth()->id(),
+            'comment' => $validation['comment'],
+        ]);
+
+        $this->emit('commentPosted');
+        $this->reset('comment');
     }
 
     public function render()

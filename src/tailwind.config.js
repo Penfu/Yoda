@@ -1,3 +1,4 @@
+const { opacity } = require('tailwindcss/defaultTheme')
 const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
@@ -56,6 +57,17 @@ module.exports = {
                     '100%': {
                         width: '100%'
                     }
+                },
+                target: {
+                    '0%': {
+                        'outline-color': 'transparent'
+                    },
+                    '50%': {
+                        'outline-color': '#a855f7'
+                    },
+                    '100%': {
+                        'outline-color': 'transparent'
+                    }
                 }
             },
             animation: {
@@ -63,6 +75,7 @@ module.exports = {
                 'fade-in-left': 'fade-in-left 0.5s ease-out',
                 'fade-in-down': 'fade-in-down 0.5s ease-out',
                 'drop-down': 'drop-down 0.15s ease-out',
+                'target': 'target 2.5s ease-in-out 3'
             }
         }
     },
