@@ -24,9 +24,13 @@ class Opinions extends Component
         $this->userOpinion = $this->practice->opinions->where('user_id', auth()->id())->first();
     }
 
-    public function updated($property)
+    /* 
+        To avoids too many network requests, this wire event should be deferred or a least set as lazy update 
+        The length counter should be a javascript client side solution 
+    */
+    public function updatedDescription()
     {
-        $this->validateOnly($property);
+        $this->validateOnly('description');
     }
 
     public function post()

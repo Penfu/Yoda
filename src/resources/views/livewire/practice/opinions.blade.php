@@ -31,7 +31,7 @@
             @if (Auth::check())
                 <form wire:submit.prevent="post">
                     @csrf
-                    <!-- Description char count -->
+                    <!-- Description lenght indicator -->
                     <div class="inline-block group my-2 select-none hover:cursor-help">
                         <span
                             class="inline-block my-1 py-1 px-2 rounded shadow font-semibold text-gray-800 {{ $errors->has('description') ? 'bg-red-200 shadow-red-300' : 'bg-emerald-200 shadow-emerald-300' }}">
@@ -54,7 +54,7 @@
                         </div>
                     </div>
 
-                    <textarea wire:model="description" id="my-opinion"
+                    <textarea wire:model.debounce.500ms="description" id="my-opinion"
                         class="w-full min-h-[64px] h-64 p-4 bg-gray-100 rounded border-2 border-gray-200 outline-none focus:ring-0 focus:border-purple-500 duration-300"
                         placeholder="Votre opinion..."></textarea>
                     <button type="submit" {{ $errors->has('description') ? 'disabled' : '' }}

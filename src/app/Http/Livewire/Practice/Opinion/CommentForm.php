@@ -15,16 +15,14 @@ class CommentForm extends Component
 
     public function post()
     {
-        $validation = $this->validate([
-            'comment' => 'required|string|max:1000',
-        ]);
+        $validation = $this->validate();
 
         $this->opinion->comments()->create([
             'user_id' => auth()->id(),
             'comment' => $validation['comment'],
         ]);
 
-        $this->emitSelf('commentPosted');
+        $this->emitUp('commentPosted');
         $this->reset('comment');
     }
 
