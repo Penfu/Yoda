@@ -18,11 +18,10 @@ class Opinions extends Component
         'description' => 'required|string|max:5000',
     ];
 
-    public function mount($practice)
+    public function mount()
     {
-        $this->practice = $practice;
-        $this->opinions = $practice->opinions;
-        $this->userOpinion = $practice->opinions->where('user_id', auth()->id())->first();
+        $this->opinions = $this->practice->opinions;
+        $this->userOpinion = $this->practice->opinions->where('user_id', auth()->id())->first();
     }
 
     public function updated($property)

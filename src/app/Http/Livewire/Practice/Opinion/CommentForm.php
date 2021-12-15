@@ -24,7 +24,7 @@ class CommentForm extends Component
             'comment' => $validation['comment'],
         ]);
 
-        $this->emit('commentPosted');
+        $this->emitSelf('commentPosted');
         $this->reset('comment');
     }
 
