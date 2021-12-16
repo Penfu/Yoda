@@ -30,13 +30,19 @@ class Opinion extends Model
         return $this->hasMany(OpinionFeedback::class);
     }
 
+    public function points()
+    {
+        return $this->feedbacks()->sum('points');
+    }
+
     public function comments()
     {
         return $this->hasMany(OpinionComment::class);
     }
 
-    public function points()
+    public function references()
     {
-        return $this->feedbacks()->sum('points');
+        return $this->belongsToMany(Reference::class, 'opinion_references');
     }
+
 }
