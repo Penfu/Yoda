@@ -15,7 +15,7 @@ class Opinion extends Component
     public function mount()
     {
         $this->points = $this->opinion->points();
-        $this->vote = $this->opinion->feedbacks->where('user_id', auth()->id())->first()->points ?? 0;
+        $this->vote   = $this->opinion->feedbacks->where('user_id', auth()->id())->first()->points ?? 0;
     }
 
     public function upVote()
@@ -36,10 +36,14 @@ class Opinion extends Component
     private function updatePoints($points)
     {
         if (Auth::check()) {
-            $this->vote = $points;
-            $this->opinion->vote($points);
+            $this->opinion->feedbacks()->updateOrCreate(
+                ['user_id' => auth()->id()],
+                ['points'  => $points]
+            );
+
+            $this->vote    = $points;
             $this->opinion = $this->opinion->refresh();
-            $this->points = $this->opinion->points();
+            $this->points  = $this->opinion->points();
             $this->render();
         } else {
             redirect()->route('login');

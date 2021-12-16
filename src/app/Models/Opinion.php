@@ -39,12 +39,4 @@ class Opinion extends Model
     {
         return $this->feedbacks()->sum('points');
     }
-
-    public function vote(int $points)
-    {
-        $this->feedbacks()->updateOrCreate(
-            ['user_id' => auth()->id()],
-            ['points' => $points]
-        );
-    }
 }
