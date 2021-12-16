@@ -46,11 +46,11 @@ class OpinionSeeder extends Seeder
         ] as $opinion) {
             Opinion::create([
                 'description' => $opinion,
-                'practice_id' => Practice::published()->random()->id,
+                'practice_id' => Practice::published()->get()->random()->id,
                 'user_id'     => User::all()->random()->id
             ]);
         }
 
-        Opinion::factory(100)->create();
+        Opinion::factory(50)->create();
     }
 }
