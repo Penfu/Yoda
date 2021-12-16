@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Opinion;
 use App\Models\Reference;
 use Illuminate\Database\Seeder;
 
@@ -30,5 +31,11 @@ class ReferenceSeeder extends Seeder
             ['description' => 'Wayne Witzel', 'url' => 'https://twitter.com/wwitzel3'],
             ['description' => 'Teaching an elephant to dance', 'url' => 'https://www.redhat.com/en/engage/teaching-an-elephant-to-dance-20180131?intcmp=7016000000127cYAAQ'],
         ]);
+
+        $references = Reference::all();
+        
+        foreach ($references as $reference) {
+            $reference->opinions()->attach(Opinion::all()->random(rand(1, 5))->pluck('id'));
+        }
     }
 }

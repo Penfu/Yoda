@@ -23,7 +23,6 @@ class DatabaseSeeder extends Seeder
             PracticeSeeder::class,
             OpinionSeeder::class,
             ReferenceSeeder::class,
-            OpinionReferenceSeeder::class,
             OpinionFeedbackSeeder::class,
             OpinionCommentSeeder::class,
         ]);
