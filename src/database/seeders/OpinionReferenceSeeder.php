@@ -19,7 +19,7 @@ class OpinionReferenceSeeder extends Seeder
     {
         for ($i = 0; $i < 30; $i++) {
             try {
-                DB::table('opinion_reference')->insert([
+                DB::table('opinion_references')->insert([
                     'opinion_id' => Opinion::all()->random()->id,
                     'reference_id' => Reference::all()->random()->id
                 ]);
