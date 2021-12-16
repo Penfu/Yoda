@@ -17,7 +17,7 @@ class OpinionFactory extends Factory
     {
         return [
             'description' => $this->faker->text(1000),
-            'practice_id' => Practice::all()->random()->id,
+            'practice_id' => Practice::published()->random()->id,
             'user_id'     => User::all()->random()->id
         ];
     }

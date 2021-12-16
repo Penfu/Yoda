@@ -46,7 +46,7 @@ class OpinionSeeder extends Seeder
         ] as $opinion) {
             Opinion::create([
                 'description' => $opinion,
-                'practice_id' => Practice::all()->random()->id,
+                'practice_id' => Practice::published()->random()->id,
                 'user_id'     => User::all()->random()->id
             ]);
         }
