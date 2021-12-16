@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PracticeController;
 use App\Http\Controllers\DomainController;
+use App\Http\Controllers\ReferenceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +31,8 @@ Route::get('/practice-{practice}', [PracticeController::class, 'index'])->name('
 
 Route::get('/domains', [DomainController::class, 'index'])->name('domains');
 Route::get('/domain-{domain}', [DomainController::class, 'byDomain'])->name('domain');
+
+Route::get('/references', [ReferenceController::class, 'index'])->name('references');
 
 Route::middleware(['guest:' . config('fortify.guard')])->group(function () {
     Route::get('login/github', [LoginController::class, 'github'])->name('login.github');

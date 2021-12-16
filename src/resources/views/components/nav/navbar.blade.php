@@ -43,6 +43,7 @@
                                 route="{{ route('domain', ['domain' => $domain->slug]) }}" />
                         @endforeach
                     </x-nav.dropdown>
+                    <x-nav.link name="References" route="{{ route('references') }}" />
 
                     <!-- Login !-->
                     <div class="flex w-full justify-end">
@@ -90,6 +91,7 @@
                             route="{{ route('domain', ['domain' => $domain->slug]) }}" />
                     @endforeach
                 </x-nav.mobile-dropdown>
+                <x-nav.mobile-link name="References" route="{{ route('references') }}" />
 
                 <!-- Login !-->
                 <div class="flex flex-col md:flex-row w-full border-t text-center ">
