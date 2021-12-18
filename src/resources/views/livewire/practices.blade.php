@@ -8,9 +8,9 @@
         @endisset
 
         @if (count($practices) > 0)
-            <p>{{ count($practices) }} {{ count($practices) == 1 ? 'pratique trouvé' : 'pratiques trouvés' }}</p>
+            <p>{{ count($practices) }} {{ count($practices) == 1 ? 'pratique trouvée' : 'pratiques trouvées' }}</p>
         @else
-            <p>Aucune pratique trouvé</p>
+            <p>Aucune pratique trouvée</p>
         @endif
     </div>
 
