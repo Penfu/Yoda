@@ -1,6 +1,9 @@
 <x-app-layout>
     <div class="max-w-7xl mx-auto pt-8 px-4 sm:px-6 lg:px-8">
-        <!-- References -->
-        <livewire:references :references="$references" />
+        <h1 class="text-6xl font-bold uppercase">Références</h1>
+
+        <div class="py-12">
+            <livewire:references :references="$references" />
+        </div>
     </div>
 </x-app-layout>
