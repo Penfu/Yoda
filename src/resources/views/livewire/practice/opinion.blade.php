@@ -20,7 +20,7 @@
                     </svg>
                 </button>
             @endif
-            
+
             <!-- Unvote -->
             <div
                 class="w-full rounded-md shadow text-4xl 
@@ -54,14 +54,32 @@
         </div>
 
         <!-- Opinion -->
-        <div class="grow overflow-x-hidden text-ellipsis">
-            <p class="inline">{{ $opinion->description }}</p>
-            <a href="#" class="inline text-purple-500 hover:text-purple-600 duration-300">
-                {{ $opinion->user->name }}
-            </a>
-            <span class="text-gray-500">
-                {{ $opinion->created_at->translatedFormat('d.m.y - h\hm') }}
-            </span>
+        <div class="grow flex flex-col overflow-x-hidden text-ellipsis">
+            <!-- Body -->
+            <div class="grow">
+                <p class="inline">{{ $opinion->description }}</p>
+                <a href="#" class="grow inline text-purple-500 hover:text-purple-600 duration-300">
+                    {{ $opinion->user->name }}
+                </a>
+                <span class="text-gray-500">
+                    {{ $opinion->created_at->translatedFormat('d.m.y - h\hm') }}
+                </span>
+            </div>
+            <!-- References -->
+            <div>
+                @foreach ($opinion->references as $reference)
+                    @isset($reference->url)
+                        <a href="{{ $reference->url }}" target="_blank"
+                            class="inline-block mr-1 my-1 px-2 py-1 bg-purple-200 rounded-md shadow shadow-purple-300 text-purple-500 hover:text-purple-600 duration-300">
+                            <span>{{ $reference->title }}</span>
+                        </a>
+                    @else
+                        <div class="inline-block mr-1 my-1 px-2 py-1 bg-gray-100 rounded-md shadow">
+                            <span>{{ $reference->title }}</span>
+                        </div>
+                    @endisset
+                @endforeach
+            </div>
         </div>
 
         <!-- Actions -->

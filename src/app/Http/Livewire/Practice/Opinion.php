@@ -14,10 +14,6 @@ class Opinion extends Component
 
     public function mount()
     {
-        foreach ($this->opinion->references()->get() as $reference) {
-            echo $reference->description;
-        }
-
         $this->points = $this->opinion->points();
         $this->vote   = $this->opinion->feedbacks->where('user_id', auth()->id())->first()->points ?? 0;
     }
