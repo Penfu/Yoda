@@ -17,6 +17,7 @@ class CreateReferencesTable extends Migration
             $table->id();
             $table->string('title', 100);
             $table->string('url', 2000)->nullable()->default(null);
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

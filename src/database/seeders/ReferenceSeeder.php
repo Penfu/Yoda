@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Opinion;
 use App\Models\Reference;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class ReferenceSeeder extends Seeder
@@ -15,7 +16,7 @@ class ReferenceSeeder extends Seeder
      */
     public function run()
     {
-        Reference::insert([
+        foreach ([
             ['title' => 'Martin Fowler', 'url' => 'https://martinfowler.com/bliki/Yagni.html'],
             ['title' => 'Agile programming misconceptions', 'url' => 'https://opensource.com/life/16/1/lightning-talk-common-misconceptions-agile-and-open-source'],
             ['title' => 'Extreme Programming Explained', 'url' => 'https://www.amazon.com/Extreme-Programming-Explained-Embrace-Change/dp/0321278658/ref=as_li_ss_tl?ie=UTF8&qid=1493658091&sr=8-1&keywords=extreme+programming+explained&linkCode=sl1&tag=voidspace-20&linkId=2fb4e052071a43c337af9a809b64d8f9'],
@@ -30,10 +31,16 @@ class ReferenceSeeder extends Seeder
             ['title' => 'Ansible', 'url' => 'https://www.ansible.com/'],
             ['title' => 'Wayne Witzel', 'url' => 'https://twitter.com/wwitzel3'],
             ['title' => 'Teaching an elephant to dance', 'url' => 'https://www.redhat.com/en/engage/teaching-an-elephant-to-dance-20180131?intcmp=7016000000127cYAAQ'],
-        ]);
+        ] as $reference) {
+            Reference::create([
+                'title' => $reference['title'],
+                'url' => $reference['url'],
+                'user_id' => User::all()->random()->id
+            ]);
+        };
 
         $references = Reference::all();
-        
+
         foreach ($references as $reference) {
             $reference->opinions()->attach(Opinion::all()->random(rand(1, 5))->pluck('id'));
         }
