@@ -1,7 +1,7 @@
 <x-app-layout>
     <div class="max-w-7xl mx-auto pt-8 px-4 sm:px-6 lg:px-8">
         <!-- Domain -->
-        <a href="{{ route('domain', ['domain' => $practice->domain->slug]) }}" class="group inline-block">
+        <a href="{{ route('practices.byDomain', ['domain' => $practice->domain->slug]) }}" class="group inline-block">
             <div class="flex items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" class="md:h-12 w-0 md:group-hover:w-12 duration-500" fill="none"
                     viewBox="0 0 24 24" stroke="currentColor">

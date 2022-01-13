@@ -34,13 +34,13 @@
             <div class="flex-1 flex items-center justify-center lg:items-stretch lg:justify-start h-full ">
                 <div class="hidden w-full h-full lg:flex space-x-4">
                     <x-nav.link name="Accueil" route="{{ route('home') }}" />
-                    <x-nav.dropdown name="Domaines" route="{{ route('domains') }}" route-group="domain"
+                    <x-nav.dropdown name="Pratiques" route="{{ route('practices') }}" route-group="practice"
                         title="Liste des pratiques par domaine">
                         <x-nav.dropdown-link name="Toutes {{ $domains->sum('practices_count') }}"
-                            route="{{ route('domains') }}" />
+                            route="{{ route('practices') }}" />
                         @foreach ($domains as $domain)
                             <x-nav.dropdown-link name="{!! $domain->name !!} {{ $domain->practices_count }}"
-                                route="{{ route('domain', ['domain' => $domain->slug]) }}" />
+                                route="{{ route('practices.byDomain', ['domain' => $domain->slug]) }}" />
                         @endforeach
                     </x-nav.dropdown>
                     <x-nav.link name="References" route="{{ route('references') }}" />
@@ -83,12 +83,12 @@
         <div class="hidden lg:hidden w-full" id="mobile-menu">
             <div class="px-4 py-2 pb-8 space-y-1">
                 <x-nav.mobile-link name="Accueil" route="{{ route('home') }}" />
-                <x-nav.mobile-dropdown name="Domaines" route-group="domain">
+                <x-nav.mobile-dropdown name="Pratiques" route-group="pratice">
                     <x-nav.mobile-dropdown-link name="Toutes {{ $domains->sum('practices_count') }}"
-                        route="{{ route('domains') }}" />
+                        route="{{ route('practices') }}" />
                     @foreach ($domains as $domain)
                         <x-nav.mobile-dropdown-link name="{!! $domain->name !!} {{ $domain->practices_count }}"
-                            route="{{ route('domain', ['domain' => $domain->slug]) }}" />
+                            route="{{ route('practices.byDomain', ['domain' => $domain->slug]) }}" />
                     @endforeach
                 </x-nav.mobile-dropdown>
                 <x-nav.mobile-link name="References" route="{{ route('references') }}" />
