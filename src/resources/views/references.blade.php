@@ -3,7 +3,11 @@
         <h1 class="text-6xl font-bold uppercase">Références</h1>
 
         <div class="py-12">
-            <livewire:references :references="$references" />
+            <livewire:references />
+        </div>
+
+        <div class="py-12">
+            <livewire:reference-form />
         </div>
     </div>
 </x-app-layout>

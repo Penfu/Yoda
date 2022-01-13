@@ -8,8 +8,6 @@ class ReferenceController extends Controller
 {
     public function index()
     {
-        return view('references')->with([
-            'references' => Reference::all(),
-        ]);
+        return view('references');
     }
 }
