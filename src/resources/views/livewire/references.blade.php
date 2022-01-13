@@ -6,9 +6,7 @@
     @if (session()->has('alert'))
         <x-alert :message="session('alert')" />
     @endif
-    @error('title') <span class="error">{{ $message }}</span> @enderror
-    @error('url') <span class="error">{{ $message }}</span> @enderror
-    
+
     <span class="flex items-center py-2">
         <span class="grow">
             @if (count($references) > 0)
@@ -17,9 +15,11 @@
                 Aucune référence trouvée
             @endif
         </span>
-        <button type="button" id="btn-open-modal" class="btn-primary">
-            Ajouter une référence
-        </button>
+        @auth
+            <button type="button" id="btn-open-modal" class="btn-primary">Ajouter une référence</button>
+        @else
+            <a href="{{ route('login') }}" class="btn-primary">Ajouter une référence</a>
+        @endauth
     </span>
 
     <div class="my-4 space-y-4">
