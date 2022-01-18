@@ -54,6 +54,8 @@
                                 <span class="font-bold">{{ Auth::user()->fullname }}</span>
                                 <span>&nbsp</span><span>~</span><span>&nbsp</span>
                                 <span class="font-bold">{{ Auth::user()->name }}</span>
+                                <span>&nbsp</span><span>~</span><span>&nbsp</span>
+                                <span class="font-bold">{{ Auth::user()->role->name }}</span>
                             </div>
 
                             <!-- Logout !-->
@@ -103,6 +105,8 @@
                                 <span class="font-bold">{{ Auth::user()->fullname }}</span>
                                 <span>~</span>
                                 <span class="font-bold">{{ Auth::user()->name }}</span>
+                                <span>~</span>
+                                <span class="font-bold">{{ Auth::user()->role->name }}</span>
                             </div>
                         </div>
                         <form method="POST" action="{{ route('logout') }}" class="py-2">
