@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PracticeController;
-use App\Http\Controllers\DomainController;
 use App\Http\Controllers\ReferenceController;
 
 /*
