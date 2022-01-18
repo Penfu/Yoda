@@ -15,7 +15,7 @@ class PracticesModeration extends Component
         $practices = Practice::with('domain', 'publicationState')
             ->orderBy('publication_state_id')->get();
 
-        $this->domains = $practices->groupBy(fn ($practice) => $practice->domain->id)->toBase();
+        $this->domains = $practices->groupBy(fn ($practice) => $practice->domain->name)->toBase();
         $this->practicesCount = $this->domains->sum(fn ($practice) => $practice->count());
     }
 
