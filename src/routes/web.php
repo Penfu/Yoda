@@ -29,6 +29,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/practices', [PracticeController::class, 'all'])->name('practices');
 Route::get('/practices/domain/{domain}', [PracticeController::class, 'byDomain'])->name('practices.byDomain');
 Route::get('/practice/{practice}', [PracticeController::class, 'index'])->name('practice')->middleware('publication.state');
+Route::get('/practices/moderation', [PracticeController::class, 'moderation'])->name('practices.moderation')->can('moderate');
 
 Route::get('/references', [ReferenceController::class, 'index'])->name('references');
 

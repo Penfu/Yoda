@@ -65,4 +65,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Opinion::class);
     }
+
+    public function isModerator(): bool
+    {
+        return $this->role->slug === 'MOD';
+    }
 }

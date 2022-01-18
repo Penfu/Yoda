@@ -28,4 +28,9 @@ class PracticeController extends Controller
         session(['domain' => $domain]);
         return view('practices')->with('domain', $domain);
     }
+
+    public function moderation()
+    {
+        return view('practices-moderation');
+    }
 }

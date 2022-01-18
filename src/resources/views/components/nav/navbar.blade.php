@@ -36,8 +36,14 @@
                     <x-nav.link name="Accueil" route="{{ route('home') }}" />
                     <x-nav.dropdown name="Pratiques" route="{{ route('practices') }}" route-group="practice"
                         title="Liste des pratiques par domaine">
+                        @can('access-moderator')
+                            <!-- Moderator only all pratices of every states !-->
+                            <x-nav.dropdown-link name="Toutes ~ Modération" route="{{ route('practices.moderation') }}" />
+                        @endcan
+
                         <x-nav.dropdown-link name="Toutes {{ $domains->sum('practices_count') }}"
                             route="{{ route('practices') }}" />
+
                         @foreach ($domains as $domain)
                             <x-nav.dropdown-link name="{!! $domain->name !!} {{ $domain->practices_count }}"
                                 route="{{ route('practices.byDomain', ['domain' => $domain->slug]) }}" />
@@ -86,8 +92,15 @@
             <div class="px-4 py-2 pb-8 space-y-1">
                 <x-nav.mobile-link name="Accueil" route="{{ route('home') }}" />
                 <x-nav.mobile-dropdown name="Pratiques" route-group="pratice">
+                    @can('access-moderator')
+                        <!-- Moderator only all pratices of every states !-->
+                        <x-nav.mobile-dropdown-link name="Toutes ~ Modération"
+                            route="{{ route('practices.moderation') }}" />
+                    @endcan
+
                     <x-nav.mobile-dropdown-link name="Toutes {{ $domains->sum('practices_count') }}"
                         route="{{ route('practices') }}" />
+
                     @foreach ($domains as $domain)
                         <x-nav.mobile-dropdown-link name="{!! $domain->name !!} {{ $domain->practices_count }}"
                             route="{{ route('practices.byDomain', ['domain' => $domain->slug]) }}" />
