@@ -5,12 +5,12 @@
             <h3 class="grow font-bold text-2xl uppercase">
                 {{ $opinions->count() }} {{ $opinions->count() > 1 ? 'Opinions' : 'Opinions' }}
             </h3>
-            @if ($practice->isProposed())
+            @can('publish', $practice)
                 <button wire:click="publishPractice"
                     class="mr-2 py-2 px-4 bg-purple-500 hover:bg-purple-600 rounded shadow shadow-purple-300 text-white duration-300">
                     Publier la pratique
                 </button>
-            @endif
+            @endcan
             <a href="#my-opinion"
                 class="py-2 px-4 bg-purple-500 hover:bg-purple-600 rounded shadow shadow-purple-300 text-white duration-300">
                 {{ isset($userOpinion) ? 'Voir mon opinion' : 'Ajouter une opinion' }}
