@@ -83,7 +83,7 @@
         </div>
 
         <!-- Actions -->
-        @if ($opinion->user == Auth::user())
+        @can('delete', $opinion)
             <div class="flex flex-col items-start ml-8 space-y-2">
                 <button wire:click="delete"
                     class="p-1 bg-gray-200 hover:bg-gray-300 rounded-md text-gray-500 hover:text-gray-600">
@@ -94,7 +94,7 @@
                     </svg>
                 </button>
             </div>
-        @endif
+        @endcan
     </div>
 
     <!-- Comments !-->
