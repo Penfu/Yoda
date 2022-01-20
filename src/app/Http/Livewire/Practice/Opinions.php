@@ -34,7 +34,7 @@ class Opinions extends Component
 
         $this->practice->publish();
 
-        return redirect()->route('home')->with('success', 'La pratique a bien été publiée');
+        return redirect()->route('home')->with('alert', 'La pratique a bien été publiée');
     }
 
     /* 

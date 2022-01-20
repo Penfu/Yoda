@@ -8,13 +8,18 @@
                 consequuntur, deserunt quas similique magni possimus.
             </p>
             <div class="pt-2">
-                <a href="{{ route('practices') }}" class="px-4 py-2 bg-purple-500 hover:bg-purple-600 rounded shadow shadow-purple-400 text-white">
+                <a href="{{ route('practices') }}"
+                    class="px-4 py-2 bg-purple-500 hover:bg-purple-600 rounded shadow shadow-purple-400 text-white">
                     En voir plus
                 </a>
             </div>
         </div>
 
         <div class="py-12">
+            @if (session()->has('alert'))
+                <x-alert :message="session('alert')" />
+            @endif
+
             <livewire:practices :days="$days" />
         </div>
     </div>
