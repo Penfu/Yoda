@@ -18,18 +18,14 @@ use App\Http\Controllers\ReferenceController;
 |
 */
 
-/*
-Route::get('/', function () {
-    return view('welcome');
-});
-*/
-
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/practices', [PracticeController::class, 'all'])->name('practices');
-Route::get('/practices/domain/{domain}', [PracticeController::class, 'byDomain'])->name('practices.byDomain');
-Route::get('/practice/{practice}', [PracticeController::class, 'index'])->name('practice')->middleware('publication.state');
-Route::get('/practices/moderation', [PracticeController::class, 'moderation'])->name('practices.moderation')->can('moderate');
+Route::prefix('/practices')->group(function () {
+    Route::get('', [PracticeController::class, 'all'])->name('practices');
+    Route::get('/moderation', [PracticeController::class, 'moderation'])->name('practices.moderation')->can('moderate');
+    Route::get('/domain/{domain:slug}', [PracticeController::class, 'byDomain'])->name('practices.byDomain');
+    Route::get('/{practice}', [PracticeController::class, 'index'])->name('practice')->can('view', 'practice');
+});
 
 Route::get('/references', [ReferenceController::class, 'index'])->name('references');
 

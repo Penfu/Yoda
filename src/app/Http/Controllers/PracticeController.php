@@ -7,9 +7,9 @@ use App\Models\Practice;
 
 class PracticeController extends Controller
 {
-    public function index($practice)
+    public function index(Practice $practice)
     {
-        $practice = Practice::with(['opinions'])->findOrFail($practice);
+        $practice->load('opinions');
         session(['url.intended' => url()->current()]);
 
         return view('practice')->with('practice', $practice);
@@ -21,10 +21,8 @@ class PracticeController extends Controller
         return view('practices');
     }
 
-    public function byDomain($domain)
+    public function byDomain(Domain $domain)
     {
-        $domain = Domain::whereSlug($domain)->firstOrFail();
-
         session(['domain' => $domain]);
         return view('practices')->with('domain', $domain);
     }
