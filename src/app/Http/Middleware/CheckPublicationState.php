@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use App\Models\Practice;
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\URL;
 
 class CheckPublicationState
@@ -20,7 +21,7 @@ class CheckPublicationState
     {
         $practice = Practice::findOrFail($request->practice);
 
-        if ($practice->isPublished()) {
+        if (Gate::forUser($request->user())->allows('moderate') || $practice->isPublished()) {
             return $next($request);
         }
 
