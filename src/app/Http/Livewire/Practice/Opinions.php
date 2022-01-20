@@ -3,6 +3,8 @@
 namespace App\Http\Livewire\Practice;
 
 use App\Models\Opinion;
+use App\Models\Practice;
+use Illuminate\Http\Request;
 use Livewire\Component;
 
 class Opinions extends Component
@@ -22,6 +24,17 @@ class Opinions extends Component
     {
         $this->opinions = $this->practice->opinions;
         $this->userOpinion = $this->practice->opinions->where('user_id', auth()->id())->first();
+    }
+
+    public function publishPractice(Request $request)
+    {
+        if ($request->user()->cannot('publish', $this->practice)) {
+            abort(403);
+        }
+
+        $this->practice->publish();
+
+        return redirect()->route('home')->with('success', 'La pratique a bien été publiée');
     }
 
     /* 

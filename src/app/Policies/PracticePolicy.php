@@ -13,8 +13,8 @@ class PracticePolicy
     /**
      * Determine whether the user can view the model.
      *
-     * @param  \App\Models\User|null  $user
-     * @param  \App\Models\Practice  $practice
+     * @param  User|null  $user
+     * @param  Practice   $practice
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function view(?User $user, Practice $practice)
@@ -23,61 +23,14 @@ class PracticePolicy
     }
 
     /**
-     * Determine whether the user can create models.
+     * Determine whether the user can publish models.
      *
-     * @param  \App\Models\User  $user
+     * @param  User|null  $user
+     * @param  Practice   $practice
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function create(User $user)
+    public function publish(?User $user, Practice $practice)
     {
-        //
-    }
-
-    /**
-     * Determine whether the user can update the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Practice  $practice
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function update(User $user, Practice $practice)
-    {
-        //
-    }
-
-    /**
-     * Determine whether the user can delete the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Practice  $practice
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function delete(User $user, Practice $practice)
-    {
-        //
-    }
-
-    /**
-     * Determine whether the user can restore the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Practice  $practice
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function restore(User $user, Practice $practice)
-    {
-        //
-    }
-
-    /**
-     * Determine whether the user can permanently delete the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Practice  $practice
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function forceDelete(User $user, Practice $practice)
-    {
-        //
+        return $user->can('moderate') && $practice->isProposed() && $practice->opinionOf($user);
     }
 }

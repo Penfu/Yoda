@@ -25,6 +25,11 @@
                 <span>Modifié le</span>
                 <span>{{ $practice->updated_at->translatedFormat('j F Y') }}</span>
             </div>
+            @can('moderate')
+                <div class="inline-block mr-1 my-1 px-2 py-1 bg-gray-100 rounded-md shadow">
+                    <span>{{ $practice->publicationState->name }}</span>
+                </div>
+            @endcan
             <a href="#"
                 class="inline-block mr-1 my-1 px-2 py-1 bg-purple-200 rounded-md shadow shadow-purple-300 text-purple-500 hover:text-purple-600 duration-300">
                 <span>{{ $practice->user->fullname }}</span>

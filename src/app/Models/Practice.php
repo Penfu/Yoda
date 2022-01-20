@@ -29,7 +29,12 @@ class Practice extends Model
     {
         return $this->hasMany(Opinion::class);
     }
-    
+
+    public function opinionOf(User $user): ?Opinion
+    {
+        return $this->opinions()->where('user_id', $user->id)->first();
+    }
+
     public function scopeUpdatedSince($query, string $days)
     {
         return $query->where('updated_at', '>=', Carbon::now()->subDays((int)$days)->toDateTimeString());
@@ -45,8 +50,19 @@ class Practice extends Model
         return $query->whereHas('publicationState', fn ($q) => $q->where('slug', 'PUB'));
     }
 
+    public function publish()
+    {
+        $this->publicationState()->associate(PublicationState::where('slug', 'PUB')->first());
+        $this->save();
+    }
+
     public function isPublished(): bool
     {
         return $this->publicationState->slug == 'PUB';
+    }
+
+    public function isProposed(): bool
+    {
+        return $this->publicationState->slug == 'PRO';
     }
 }
