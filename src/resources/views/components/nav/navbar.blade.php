@@ -37,7 +37,7 @@
                     <x-nav.dropdown name="Pratiques" route="{{ route('practices') }}" route-group="practice"
                         title="Liste des pratiques par domaine">
                         @can('moderate')
-                            <!-- Moderator only all pratices of every states !-->
+                            <!-- Moderator only all pratices of every states -->
                             <x-nav.dropdown-link name="Toutes ~ Modération" route="{{ route('practices.moderation') }}" />
                         @endcan
 
@@ -51,27 +51,48 @@
                     </x-nav.dropdown>
                     <x-nav.link name="References" route="{{ route('references') }}" />
 
-                    <!-- Login !-->
+                    <!-- Login -->
                     <div class="flex w-full justify-end">
                         @auth
-                            <!-- User info !-->
-                            <div class="flex items-center mr-4">
-                                <span>Connecté en tant que</span><span>&nbsp</span>
-                                <span class="font-bold">{{ Auth::user()->fullname }}</span>
-                                <span>&nbsp</span><span>~</span><span>&nbsp</span>
-                                <span class="font-bold">{{ Auth::user()->name }}</span>
-                                <span>&nbsp</span><span>~</span><span>&nbsp</span>
-                                <span class="font-bold">{{ Auth::user()->role->name }}</span>
-                            </div>
-
-                            <!-- Logout !-->
-                            <form method="POST" action="{{ route('logout') }}" class="flex items-center">
-                                @csrf
-                                <button type="submit"
-                                    class="px-3 py-2 border-2 border-purple-500 hover:border-purple-400 rounded font-semibold text-purple-500 hover:text-purple-400">
-                                    Se déconnecter
+                            <div class="flex relative" x-data="{ dropdownOpen: false }">
+                                <button @click="dropdownOpen = !dropdownOpen"
+                                    class="my-auto p-2 rounded-md bg-gray-100 focus:outline-none">
+                                    <span class="">{{ Auth::user()->fullname }}</span>
+                                    <svg class="inline h-5 w-5 text-gray-800" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M19 9l-7 7-7-7" />
+                                    </svg>
                                 </button>
-                            </form>
+                                <div x-show="dropdownOpen" @click="dropdownOpen = false"
+                                    class="fixed inset-0 h-full w-full z-10"></div>
+
+                                <div x-show="dropdownOpen" x-cloak
+                                    class="absolute right-0 top-16 w-48 bg-white rounded-md border border-gray-200 shadow-xl z-20">
+                                    <!-- Info -->
+                                    <div class="block px-4 py-2 text-sm text-gray-700 border-b border-gray-200">
+                                        <div>
+                                            Alias
+                                            <span class="inline font-bold">{{ Auth::user()->name }}</span>
+                                        </div>
+                                        <div>
+                                            Rôle
+                                            <span class="inline font-bold">{{ Auth::user()->role->name }}</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- TODO: add user personal links like profile, settings, etc... -->
+
+                                    <!-- Logout -->
+                                    <form method="POST" action="{{ route('logout') }}" class="border-t border-gray-200">
+                                        @csrf
+                                        <button type="submit"
+                                            class="w-full px-4 py-2 text-sm text-left text-gray-700 hover:bg-blue-500 hover:text-white">
+                                            Se déconnecter
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
                         @else
                             <a href="{{ route('login') }}"
                                 class="flex items-center px-3 py-1 my-4 border-2 border-purple-500 hover:border-purple-400 rounded font-semibold text-purple-500 hover:text-purple-400">
