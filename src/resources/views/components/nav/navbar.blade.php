@@ -52,9 +52,11 @@
                     <x-nav.link name="References" route="{{ route('references') }}" />
 
                     <!-- Login -->
-                    <div class="flex w-full justify-end">
+                    <div class="flex items-center w-full justify-end">
+                        <span class="mr-8 p-2 bg-gray-800 rounded-md capitalize text-white">Tag: dev</span>
+
                         @auth
-                            <div class="flex relative" x-data="{ dropdownOpen: false }">
+                            <div class="relative" x-data="{ dropdownOpen: false }">
                                 <button @click="dropdownOpen = !dropdownOpen"
                                     class="my-auto p-2 rounded-md bg-gray-100 focus:outline-none">
                                     <span class="">{{ Auth::user()->fullname }}</span>
@@ -68,7 +70,7 @@
                                     class="fixed inset-0 h-full w-full z-10"></div>
 
                                 <div x-show="dropdownOpen" x-cloak
-                                    class="absolute right-0 top-16 w-48 bg-white rounded-md border border-gray-200 shadow-xl z-20">
+                                    class="absolute right-0 top-12 w-48 bg-white rounded-md border border-gray-200 shadow-xl z-20">
                                     <!-- Info -->
                                     <div class="block px-4 py-2 text-sm text-gray-700 border-b border-gray-200">
                                         <div>
