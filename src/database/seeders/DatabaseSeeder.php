@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Domain;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -24,7 +23,8 @@ class DatabaseSeeder extends Seeder
             PracticeSeeder::class,
             OpinionSeeder::class,
             ReferenceSeeder::class,
-            OpinionReferenceSeeder::class
+            OpinionFeedbackSeeder::class,
+            OpinionCommentSeeder::class,
         ]);
     }
 }

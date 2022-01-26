@@ -41,14 +41,13 @@ class PracticeSeeder extends Seeder
             "DRY (Don't Repeat Yourself) importe beaucoup moins dans les tests que dans le code de production. La lisibilité d'un fichier de test individuel est plus importante que la maintenabilité (décomposer des morceaux réutilisables). Cela s'explique par le fait que les tests sont exécutés et lus individuellement plutôt que de faire partie d'un système plus vaste. Évidemment, une répétition excessive signifie que des composants réutilisables peuvent être créés pour des raisons de commodité, mais c'est beaucoup moins une préoccupation que pour la production.",
             "Refactorisez chaque fois que vous en voyez le besoin et que vous en avez l'occasion. La programmation est une question d'abstractions, et plus vos abstractions sont proches du domaine du problème, plus votre code est facile à comprendre et à maintenir. Au fur et à mesure que les systèmes se développent organiquement, ils doivent changer de structure pour s'adapter à l'expansion de leurs cas d'utilisation. Les systèmes dépassent leurs abstractions et leur structure, et ne pas les changer devient une dette technique qui est plus pénible (et plus lente et plus boguée) à gérer. Incluez le coût de l'élimination de la dette technique (remaniement) dans les estimations du travail sur les fonctionnalités. Plus vous laissez la dette en place, plus les intérêts s'accumulent. Un excellent livre sur le remaniement et les tests est Working Effectively with Legacy Code, de Michael Feathers.",
             "Faites en sorte que le code soit d'abord correct et ensuite rapide. Lorsque vous travaillez sur des problèmes de performance, établissez toujours un profil avant d'apporter des corrections. En général, le goulot d'étranglement n'est pas tout à fait là où vous pensiez qu'il était. Écrire du code obscur parce qu'il est plus rapide ne vaut la peine que si vous l'avez profilé et prouvé que cela en vaut vraiment la peine. Écrire un test qui exerce le code que vous profilez avec un timing autour de lui permet de savoir plus facilement quand vous avez fini, et peut être laissé dans la suite de tests pour prévenir les régressions de performance. (Avec la remarque habituelle que l'ajout de code de chronométrage change toujours les caractéristiques de performance du code, ce qui fait du travail de performance l'une des tâches les plus frustrantes)."
-            ]
-            as $practice) {
+        ] as $practice) {
             Practice::create([
-                'description' => $practice,
-                'domain_id' => Domain::all()->random()->id,
+                'description'          => $practice,
+                'domain_id'            => Domain::all()->random()->id,
                 'publication_state_id' => PublicationState::all()->random()->id,
-                'user_id' => User::all()->random()->id,
-                'updated_at' => Carbon::now()->subMinutes(rand(1, 5*24*60))
+                'user_id'              => User::all()->random()->id,
+                'updated_at'           => Carbon::now()->subMinutes(rand(1, 5 * 24 * 60))
             ]);
         }
 

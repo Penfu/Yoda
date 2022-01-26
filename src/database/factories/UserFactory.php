@@ -8,7 +8,6 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
-use Laravel\Jetstream\Features;
 
 class UserFactory extends Factory
 {
@@ -26,7 +25,7 @@ class UserFactory extends Factory
      */
     public function definition()
     {
-        $firstName = $this->faker->firstName();
+        $firstName = $this->faker->unique()->firstName();
         return [
             'role_id' => Role::all()->random()->id,
             'name' => $firstName,

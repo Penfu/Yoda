@@ -18,7 +18,7 @@ class PracticeFactory extends Factory
     public function definition()
     {
         return [
-            'description' => $this->faker->realText(5000),
+            'description' => $this->faker->realText(1000),
             'domain_id' => Domain::all()->random()->id,
             'publication_state_id' => PublicationState::all()->random()->id,
             'user_id' => User::all()->random()->id,

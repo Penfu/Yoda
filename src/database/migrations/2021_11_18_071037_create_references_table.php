@@ -15,8 +15,9 @@ class CreateReferencesTable extends Migration
     {
         Schema::create('references', function (Blueprint $table) {
             $table->id();
-            $table->string('description', 100);
-            $table->string('url', 2000);
+            $table->string('title', 100);
+            $table->string('url', 2000)->nullable()->default(null);
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

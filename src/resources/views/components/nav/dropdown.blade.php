@@ -18,7 +18,7 @@
     </a>
 
     <div
-        class="hidden group-hover:block z-40 absolute top-20 left-0 w-full bg-white shadow-inner drop-shadow-md animate-drop-down">
+        class="z-40 hidden group-hover:block absolute top-20 left-0 w-full bg-white shadow-inner drop-shadow-md animate-drop-down">
         <div class="max-w-7xl mx-auto px-8 sm:px-4 lg:px-8 my-8">
             @isset($title)
                 <h3 class="pb-8 font-bold text-3xl text-purple-500">{{ $title }}</h3>

@@ -25,6 +25,16 @@ class Practice extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function opinions()
+    {
+        return $this->hasMany(Opinion::class);
+    }
+
+    public function opinionOf(User $user): ?Opinion
+    {
+        return $this->opinions()->where('user_id', $user->id)->first();
+    }
+
     public function scopeUpdatedSince($query, string $days)
     {
         return $query->where('updated_at', '>=', Carbon::now()->subDays((int)$days)->toDateTimeString());
@@ -32,27 +42,27 @@ class Practice extends Model
 
     public function scopeOfDomain($query, string $domain)
     {
-        return $query->whereHas(
-            'domain',
-            fn ($q) => $q->where('slug', $domain)
-        );
+        return $query->whereHas('domain', fn ($q) => $q->where('slug', $domain));
     }
 
     public function scopePublished($query)
     {
-        return $this->wherePublicationState($query, 'PUB');
+        return $query->whereHas('publicationState', fn ($q) => $q->where('slug', 'PUB'));
     }
 
-    private function wherePublicationState($query, string $state)
+    public function publish()
     {
-        return $query->whereHas(
-            'publicationState',
-            fn ($q) => $q->where('slug', $state)
-        );
+        $this->publicationState()->associate(PublicationState::where('slug', 'PUB')->first());
+        $this->save();
     }
 
     public function isPublished(): bool
     {
-        return $this->publicationState->slug == 'PUB' ? true : false;
+        return $this->publicationState->slug == 'PUB';
+    }
+
+    public function isProposed(): bool
+    {
+        return $this->publicationState->slug == 'PRO';
     }
 }
