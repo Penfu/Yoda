@@ -5,6 +5,7 @@ namespace App\Policies;
 use App\Models\Practice;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Support\Facades\Auth;
 
 class PracticePolicy
 {
@@ -19,7 +20,7 @@ class PracticePolicy
      */
     public function view(?User $user, Practice $practice)
     {
-        return $practice->isPublished() || $user->can('moderate');
+        return $practice->isPublished() || (Auth::check() && $user->can('moderate'));
     }
 
     /**
@@ -31,6 +32,6 @@ class PracticePolicy
      */
     public function publish(?User $user, Practice $practice)
     {
-        return $user->can('moderate') && $practice->isProposed() && $practice->opinionOf($user);
+        return (Auth::check() && $user->can('moderate')) && $practice->isProposed() && $practice->opinionOf($user);
     }
 }
