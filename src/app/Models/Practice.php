@@ -77,4 +77,9 @@ class Practice extends Model
     {
         return $this->user_id === $user->id;
     }
+
+    public function changelogs()
+    {
+        return $this->hasMany(Changelog::class);
+    }
 }

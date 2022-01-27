@@ -39,6 +39,12 @@ class PracticeEdit extends Component
             $this->addError('title', 'Une pratique avec ce même titre existe déjà.');
             return;
         } else {
+            $this->practice->changelogs()->create([
+                'user_id'    => auth()->id(),
+                'reason'     => $validation['reason'],
+                'previously' => $this->practice->title,
+            ]);
+
             $this->practice->title = $validation['title'];
             $this->practice->save();
             $this->isEditing = false;
