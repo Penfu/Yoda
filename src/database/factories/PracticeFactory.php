@@ -18,12 +18,12 @@ class PracticeFactory extends Factory
     public function definition()
     {
         return [
-            'title' => $this->faker->text(40),
+            'title' => str_replace('.', '', $this->faker->text(40)),
             'description' => $this->faker->realText(1000),
             'domain_id' => Domain::all()->random()->id,
             'publication_state_id' => PublicationState::all()->random()->id,
             'user_id' => User::all()->random()->id,
-            'updated_at' => Carbon::now()->subMinutes(rand(1, 5*24*60))
+            'updated_at' => Carbon::now()->subMinutes(rand(1, 5 * 24 * 60))
         ];
     }
 }
