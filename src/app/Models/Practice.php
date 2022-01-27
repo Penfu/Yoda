@@ -52,6 +52,11 @@ class Practice extends Model
         return $query->whereHas('publicationState', fn ($q) => $q->where('slug', 'PUB'));
     }
 
+    public function scopeTitleExist($query, string $title) : bool
+    {
+        return $this->where('title', $title)->exists();
+    }
+
     public function publish()
     {
         $this->publicationState()->associate(PublicationState::where('slug', 'PUB')->first());

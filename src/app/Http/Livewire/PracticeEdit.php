@@ -35,7 +35,7 @@ class PracticeEdit extends Component
     {
         $validation = $this->validate();
 
-        if (Practice::where('title', $validation['title'])->exists()) {
+        if (Practice::titleExist($validation['title'])) {
             $this->addError('title', 'Une pratique avec ce même titre existe déjà.');
             return;
         } else {
