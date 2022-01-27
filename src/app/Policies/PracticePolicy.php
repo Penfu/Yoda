@@ -34,4 +34,9 @@ class PracticePolicy
     {
         return (Auth::check() && $user->can('moderate')) && $practice->isProposed() && $practice->opinionOf($user);
     }
+
+    public function edit(?User $user, Practice $practice)
+    {
+        return Auth::check() && ($practice->isOwner($user) || $user->can('moderate'));
+    }
 }

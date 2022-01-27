@@ -67,4 +67,9 @@ class Practice extends Model
     {
         return $this->publicationState->slug == 'PRO';
     }
+
+    public function isOwner(User $user): bool
+    {
+        return $this->user_id === $user->id;
+    }
 }
