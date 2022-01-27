@@ -5,6 +5,7 @@ namespace App\Policies;
 use App\Models\Opinion;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Support\Facades\Auth;
 
 class OpinionPolicy
 {
@@ -31,6 +32,6 @@ class OpinionPolicy
      */
     public function delete(?User $user, Opinion $opinion)
     {
-        return $user->id === $opinion->user_id || $user->can('moderate');
+        return Auth::check() && ($user->id === $opinion->user_id || $user->can('moderate'));
     }
 }
