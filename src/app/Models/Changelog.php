@@ -15,4 +15,9 @@ class Changelog extends Model
     {
         return $this->belongsTo(Practice::class);
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

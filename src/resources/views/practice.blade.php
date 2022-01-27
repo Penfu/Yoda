@@ -40,5 +40,6 @@
 
         <livewire:practice.opinions :practice="$practice" />
 
+        <livewire:practice.changelogs :practice="$practice" />
     </div>
 </x-app-layout>

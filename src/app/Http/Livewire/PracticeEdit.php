@@ -49,6 +49,8 @@ class PracticeEdit extends Component
             $this->practice->save();
             $this->isEditing = false;
 
+            $this->emit('refreshChangelogs');
+
             session()->flash('alert', 'Le titre de la pratique a bien était mis à jour.');
         }
     }
