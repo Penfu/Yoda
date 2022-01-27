@@ -29,7 +29,7 @@ class OpinionPolicy
      * @param  \App\Models\Opinion  $opinion
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Opinion $opinion)
+    public function delete(?User $user, Opinion $opinion)
     {
         return $user->id === $opinion->user_id || $user->can('moderate');
     }
