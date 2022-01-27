@@ -16,7 +16,8 @@
 
         <!--- Practice -->
         <div>
-            <h2 class="text-xl">{{ $practice->title }}</h2>
+            <livewire:practice-edit :practice="$practice" />
+
             <p class="my-4 text-lg">{{ $practice->description }}</p>
             <div class="inline-block mr-1 my-1 px-2 py-1 bg-gray-100 rounded-md shadow">
                 <span>Créé le</span>

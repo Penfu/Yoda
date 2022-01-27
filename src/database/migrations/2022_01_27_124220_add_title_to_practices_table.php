@@ -14,7 +14,7 @@ class AddTitleToPracticesTable extends Migration
     public function up()
     {
         Schema::table('practices', function (Blueprint $table) {
-            $table->string('title', 40)->after('id');
+            $table->string('title', 40)->unique()->after('id');
         });
     }
 
