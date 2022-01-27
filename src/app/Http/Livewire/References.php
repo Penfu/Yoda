@@ -25,7 +25,7 @@ class References extends Component
     public function referencePosted()
     {
         $this->references = Reference::all();
-        session()->flash('success', 'Votre référence a bien été enregistrée.');
+        session()->flash('alert', 'Votre référence a bien été enregistrée.');
         $this->render();
     }
 
