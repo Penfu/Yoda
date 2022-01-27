@@ -53,7 +53,7 @@
 
                     <!-- Login -->
                     <div class="flex items-center w-full justify-end">
-                        <span class="mr-8 p-2 bg-gray-800 rounded-md capitalize text-white">Tag: dev</span>
+                        <span class="mr-8 p-2 bg-gray-800 rounded-md capitalize text-white">Tag: Eval - Start Armand Marechal</span>
 
                         @auth
                             <div class="relative" x-data="{ dropdownOpen: false }">
