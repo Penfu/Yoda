@@ -7,14 +7,13 @@ use Illuminate\View\Component;
 class Alert extends Component
 {
     private string $message;
-    private int $delay; // in seconds
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct(string $message, int $delay = 0)
+    public function __construct(string $message)
     {
         $this->message = $message;
     }

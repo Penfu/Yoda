@@ -13,25 +13,27 @@ class ReferenceForm extends Component
 
     protected $rules = [
         'title' => 'required|string|min:10|max:1000',
-        'url'   => 'nullable|string|max:1000',
+        'url'   => 'required|string|url|max:500',
     ];
 
     public function post()
     {
-        if (Auth::check()) {
-            $validation = $this->validate();
+        $validation = $this->validate();
 
-            Reference::create([
+        if (Reference::byUrl($validation['url'])->get()->isNotEmpty()) {
+            return $this->emit('referenceAlreadyExist');
+        } else {
+            $reference = Reference::make([
                 'title'   => $validation['title'],
                 'url'     => $validation['url'],
-                'user_id' => auth()->id(),
             ]);
 
-            $this->emit('referencePosted');
-            $this->reset('title', 'url');
-        } else {
-            redirect()->route('login');
+            $reference->author()->associate(Auth::user());
+            $reference->save();
         }
+
+        $this->emit('referencePosted');
+        $this->reset('title', 'url');
     }
 
     public function render()

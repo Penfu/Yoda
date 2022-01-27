@@ -24,4 +24,9 @@ class Reference extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    public function scopeByUrl($query, $url)
+    {
+        return $query->where('url', $url);
+    }
 }
