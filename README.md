@@ -36,7 +36,7 @@ If you attempt to use the OAuth2 provider, you will need to create a **client** 
 Build the resources to public directory.
 
 ```bash
-npm run build
+npm run dev
 ```
 
 Optionaly watch the changes and auto build.
