@@ -27,13 +27,14 @@ class UserFactory extends Factory
     {
         $firstName = $this->faker->unique()->firstName();
         return [
-            'role_id' => Role::all()->random()->id,
-            'name' => $firstName,
-            'fullname' =>  $firstName . ' ' . $this->faker->lastName(),
-            'email' => $this->faker->unique()->safeEmail(),
+            'name'              => $firstName,
+            'fullname'          =>  $firstName . ' ' . $this->faker->lastName(),
+            'description'       => $this->faker->sentence(10),
+            'email'             => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'password' => Hash::make('password'),
-            'remember_token' => Str::random(10),
+            'password'          => Hash::make('password'),
+            'remember_token'    => Str::random(10),
+            'role_id'           => Role::all()->random()->id,
         ];
     }
 
@@ -49,25 +50,5 @@ class UserFactory extends Factory
                 'email_verified_at' => null,
             ];
         });
-    }
-
-    /**
-     * Indicate that the user should have a personal team.
-     *
-     * @return $this
-     */
-    public function withPersonalTeam()
-    {
-        if (!Features::hasTeamFeatures()) {
-            return $this->state([]);
-        }
-
-        return $this->has(
-            Team::factory()
-                ->state(function (array $attributes, User $user) {
-                    return ['name' => $user->name . '\'s Team', 'user_id' => $user->id, 'personal_team' => true];
-                }),
-            'ownedTeams'
-        );
     }
 }

@@ -40,11 +40,11 @@ class UserSeeder extends Seeder
             ['lname' => 'HURNI',            'fname' => 'Pascal',           'role' => $moderator],
         ] as $user) {
             User::create([
-                'role_id'  => $user['role']->id,
                 'name'     => ucfirst(strtolower($user['fname'])) . ucfirst(strtolower($user['lname'])),
                 'fullname' => ucfirst(strtolower($user['fname'])) . " " . $user['lname'],
                 'email'    => ucfirst(strtolower($user['fname'])) . "." . ucfirst(strtolower($user['lname'])) . "@cpnv.ch",
                 'password' => Hash::make(strtolower($user['lname'])),
+                'role_id'  => $user['role']->id,
             ]);
         }
 
