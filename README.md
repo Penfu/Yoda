@@ -10,10 +10,9 @@ git clone https://github.com/Penfu/ES-CPNV-Yoda.git
 
 ### Package manager
 
-First move into code directory `src/` and install packages dependencies.
+Install packages dependencies.
 
 ```bash
-cd src/
 composer install
 npm install
 ```
