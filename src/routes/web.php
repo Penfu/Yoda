@@ -30,7 +30,7 @@ Route::prefix('/practices')->group(function () {
 
 Route::get('/references', [ReferenceController::class, 'index'])->name('references');
 
-Route::get('/profil/{user}', [ProfileController::class, 'index'])->name('profile');
+Route::get('/{user:name}', [ProfileController::class, 'index'])->name('profile');
 
 Route::middleware(['guest:' . config('fortify.guard')])->group(function () {
     Route::get('login/github', [LoginController::class, 'github'])->name('login.github');

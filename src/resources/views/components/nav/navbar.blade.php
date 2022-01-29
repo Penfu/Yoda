@@ -70,14 +70,14 @@
                                 <div x-show="dropdownOpen" x-cloak
                                     class="absolute right-0 top-12 w-48 bg-white rounded-md border border-gray-200 shadow-xl z-20">
                                     <!-- Info -->
-                                    <a href="{{ route('profile', ['user' => Auth::id()]) }}"
+                                    <a href="{{ route('profile', ['user' => Auth::user()->name]) }}"
                                         class="block px-4 py-2 text-sm text-gray-700 border-b border-gray-200">
                                         Connecté en tant que
                                         <span class="font-bold">{{ Auth::user()->name }}</span>
                                     </a>
 
                                     <!-- My links -->
-                                    <a href="{{ route('profile', ['user' => Auth::id()]) }}"
+                                    <a href="{{ route('profile', ['user' => Auth::user()->name]) }}"
                                         class="block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-blue-500 hover:text-white">
                                         Mon profil
                                     </a>
