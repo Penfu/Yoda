@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PracticeController;
 use App\Http\Controllers\ReferenceController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,8 @@ Route::prefix('/practices')->group(function () {
 });
 
 Route::get('/references', [ReferenceController::class, 'index'])->name('references');
+
+Route::get('/profil/{user}', [ProfileController::class, 'index'])->name('profile');
 
 Route::middleware(['guest:' . config('fortify.guard')])->group(function () {
     Route::get('login/github', [LoginController::class, 'github'])->name('login.github');

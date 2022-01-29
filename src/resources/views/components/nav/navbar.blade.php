@@ -53,8 +53,6 @@
 
                     <!-- Login -->
                     <div class="flex items-center w-full justify-end">
-                        <span class="mr-8 p-2 bg-gray-800 rounded-md capitalize text-white">Tag: Eval - End Armand Marechal</span>
-
                         @auth
                             <div class="relative" x-data="{ dropdownOpen: false }">
                                 <button @click="dropdownOpen = !dropdownOpen"
@@ -72,18 +70,17 @@
                                 <div x-show="dropdownOpen" x-cloak
                                     class="absolute right-0 top-12 w-48 bg-white rounded-md border border-gray-200 shadow-xl z-20">
                                     <!-- Info -->
-                                    <div class="block px-4 py-2 text-sm text-gray-700 border-b border-gray-200">
-                                        <div>
-                                            Alias
-                                            <span class="inline font-bold">{{ Auth::user()->name }}</span>
-                                        </div>
-                                        <div>
-                                            Rôle
-                                            <span class="inline font-bold">{{ Auth::user()->role->name }}</span>
-                                        </div>
-                                    </div>
+                                    <a href="{{ route('profile', ['user' => Auth::id()]) }}"
+                                        class="block px-4 py-2 text-sm text-gray-700 border-b border-gray-200">
+                                        Connecté en tant que
+                                        <span class="font-bold">{{ Auth::user()->name }}</span>
+                                    </a>
 
-                                    <!-- TODO: add user personal links like profile, settings, etc... -->
+                                    <!-- My links -->
+                                    <a href="{{ route('profile', ['user' => Auth::id()]) }}"
+                                        class="block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-blue-500 hover:text-white">
+                                        Mon profil
+                                    </a>
 
                                     <!-- Logout -->
                                     <form method="POST" action="{{ route('logout') }}" class="border-t border-gray-200">
