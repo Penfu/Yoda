@@ -5,22 +5,24 @@ namespace App\Policies;
 use App\Models\Opinion;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
-use Illuminate\Support\Facades\Auth;
 
 class OpinionPolicy
 {
     use HandlesAuthorization;
 
-    /**
-     * Determine whether the user can view the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Opinion  $opinion
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function view(User $user, Opinion $opinion)
+    public function voteUp(User $user, Opinion $opinion)
     {
-        //
+        return $opinion->feedbacks->where('user_id', $user->id)->isEmpty() || $opinion->feedbacks->where('user_id', $user->id)->first()->points != 1;
+    }
+
+    public function unVote(User $user, Opinion $opinion)
+    {
+        return $opinion->feedbacks->where('user_id', $user->id)->isNotEmpty();
+    }
+
+    public function voteDown(User $user, Opinion $opinion)
+    {
+        return $opinion->feedbacks->where('user_id', $user->id)->isEmpty() || $opinion->feedbacks->where('user_id', $user->id)->first()->points != -1;
     }
 
     /**
@@ -30,8 +32,8 @@ class OpinionPolicy
      * @param  \App\Models\Opinion  $opinion
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(?User $user, Opinion $opinion)
+    public function delete(User $user, Opinion $opinion)
     {
-        return Auth::check() && ($user->id === $opinion->user_id || $user->can('moderate'));
+        return $user->id === $opinion->user_id || $user->can('moderate');
     }
 }

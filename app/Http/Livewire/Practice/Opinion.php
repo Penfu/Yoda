@@ -2,14 +2,12 @@
 
 namespace App\Http\Livewire\Practice;
 
-use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class Opinion extends Component
 {
     public $opinion;
     public $points;
-    public $userFeedback;
     public $vote;
 
     public function mount()
@@ -25,7 +23,11 @@ class Opinion extends Component
 
     public function unVote()
     {
-        $this->updatePoints(0);
+        $this->opinion->feedbacks()->where('user_id', auth()->id())->delete();
+        $this->vote    = 0;
+        $this->opinion = $this->opinion->refresh();
+        $this->points  = $this->opinion->points();
+        $this->render();
     }
 
     public function downVote()
@@ -35,19 +37,15 @@ class Opinion extends Component
 
     private function updatePoints($points)
     {
-        if (Auth::check()) {
-            $this->opinion->feedbacks()->updateOrCreate(
-                ['user_id' => auth()->id()],
-                ['points'  => $points]
-            );
+        $this->opinion->feedbacks()->updateOrCreate(
+            ['user_id' => auth()->id()],
+            ['points'  => $points]
+        );
 
-            $this->vote    = $points;
-            $this->opinion = $this->opinion->refresh();
-            $this->points  = $this->opinion->points();
-            $this->render();
-        } else {
-            redirect()->route('login');
-        }
+        $this->vote    = $points;
+        $this->opinion = $this->opinion->refresh();
+        $this->points  = $this->opinion->points();
+        $this->render();
     }
 
     public function delete()

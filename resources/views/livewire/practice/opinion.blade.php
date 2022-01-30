@@ -4,14 +4,7 @@
         <!-- Vote -->
         <div class="flex flex-col items-center mr-8 text-center space-y-2">
             <!-- Vote Up -->
-            @if ($vote == 1)
-                <div class="bg-gray-200 rounded-md outline-2 outline-dashed outline-purple-500 text-gray-500">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 mx-auto" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
-                    </svg>
-                </div>
-            @else
+            @can('voteUp', $opinion)
                 <button wire:click="upVote"
                     class="bg-gray-200 hover:bg-gray-300 rounded-md text-gray-500 hover:text-gray-600">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 mx-auto" fill="none" viewBox="0 0 24 24"
@@ -19,30 +12,31 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
                     </svg>
                 </button>
-            @endif
+            @else
+                <div
+                    class="bg-gray-200 rounded-md {{ Auth::check() ? 'outline-2 outline-dashed outline-purple-500' : null }} text-gray-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 mx-auto" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+                    </svg>
+                </div>
+            @endcan
 
             <!-- Unvote -->
             <div
                 class="w-full rounded-md shadow text-4xl 
-                {{ $points < 0 ? 'bg-red-200 shadow-red-300 text-red-500' : ($points > 0 ? 'bg-emerald-200 shadow-emerald-300 text-emerald-500' : 'bg-gray-200 text-gray-500') }}">
-                @if ($vote == 0)
-                    <span class="font-semibold">{{ $points }}</span>
-                @else
+                {{ $points < 0? 'bg-red-200 shadow-red-300 text-red-500': ($points > 0? 'bg-emerald-200 shadow-emerald-300 text-emerald-500': 'bg-gray-200 text-gray-500') }}">
+                @can('unVote', $opinion)
                     <button wire:click="unVote" class="w-full font-semibold">
                         {{ $points }}
                     </button>
-                @endif
+                @else
+                    <span class="font-semibold">{{ $points }}</span>
+                @endcan
             </div>
 
             <!-- Vote down -->
-            @if ($vote == -1)
-                <div class="bg-gray-200 rounded-md outline-2 outline-dashed outline-purple-500 text-gray-500">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 mx-auto" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                    </svg>
-                </div>
-            @else
+            @can('voteDown', $opinion)
                 <button wire:click="downVote"
                     class="bg-gray-200 hover:bg-gray-300 rounded-md text-gray-500 hover:text-gray-600">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 mx-auto" fill="none" viewBox="0 0 24 24"
@@ -50,7 +44,15 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                     </svg>
                 </button>
-            @endif
+            @else
+                <div
+                    class="bg-gray-200 rounded-md {{ Auth::check() ? 'outline-2 outline-dashed outline-purple-500' : null }} text-gray-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 mx-auto" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </div>
+            @endcan
         </div>
 
         <!-- Opinion -->

@@ -19,7 +19,7 @@ class OpinionFeedbackFactory extends Factory
         return [
             'user_id'    => User::all()->random()->id,
             'opinion_id' => Opinion::all()->random()->id,
-            'points'     => $this->faker->randomElement([-1, 0, 1]),
+            'points'     => $this->faker->randomElement([-1, 1]),
             'created_at' => Carbon::now()->subMinutes(rand(1 * 24 * 60, 5 * 24 * 60)),
             'updated_at' => Carbon::now()->subMinutes(rand(0, 24 * 60))
         ];
