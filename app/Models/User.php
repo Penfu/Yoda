@@ -61,9 +61,40 @@ class User extends Authenticatable
         return Role::whereSlug('MBR')->firstOrFail()->id;
     }
 
+    public function practices()
+    {
+        return $this->hasMany(Practice::class);
+    }
+
     public function opinions()
     {
         return $this->hasMany(Opinion::class);
+    }
+
+    public function opinionsFeedbacks()
+    {
+        return $this->hasMany(OpinionFeedback::class);
+    }
+
+    public function opinionsComments()
+    {
+        return $this->hasMany(OpinionComment::class);
+    }
+
+    public function references()
+    {
+        return $this->hasMany(Reference::class);
+    }
+
+    public function activities()
+    {
+        $activities = $this->practices()->published()->get()
+            ->merge($this->opinions()->get())
+            ->merge($this->opinionsFeedbacks()->get())
+            ->merge($this->opinionsComments()->get())
+            ->merge($this->references()->get());
+
+        return $activities->sortByDesc('created_at')->values()->all();
     }
 
     public function isModerator(): bool
