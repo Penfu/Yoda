@@ -19,7 +19,7 @@ class Practice extends Model
 
     public function publicationState()
     {
-        return $this->belongsTo(publicationState::class);
+        return $this->belongsTo(PublicationState::class);
     }
 
     public function user()
@@ -52,7 +52,7 @@ class Practice extends Model
         return $query->whereHas('publicationState', fn ($q) => $q->where('slug', 'PUB'));
     }
 
-    public function scopeTitleExist($query, string $title) : bool
+    public function scopeTitleExist($query, string $title): bool
     {
         return $this->where('title', $title)->exists();
     }
