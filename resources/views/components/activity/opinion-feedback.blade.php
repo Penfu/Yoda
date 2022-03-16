@@ -5,6 +5,16 @@
 
     <div class="p-4 bg-gray-100 rounded-lg">
         <div class="flex items-center space-x-2">
+            <a href="{{ route('practices.byDomain', ['domain' => $feedback->opinion->practice->domain]) }}"
+                class="py-1 px-2 bg-purple-200 rounded text font-medium text-purple-500">
+                {{ $feedback->opinion->practice->domain->name }}</a>
+            <a href="{{ route('practice', ['practice' => $feedback->opinion->practice]) }}"
+                class="hover:underline hover:text-purple-500">
+                {{ $feedback->opinion->practice->title }}</a>
+        </div>
+
+        <!-- Practice -->
+        <div class="flex items-start my-2">
             @if ($feedback->points === 1)
                 <div class="h-8 w-8 bg-green-200 rounded-md text-green-500">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mx-auto" fill="none" viewBox="0 0 24 24"
@@ -20,17 +30,7 @@
                     </svg>
                 </div>
             @endif
-            <a href="{{ route('practices.byDomain', ['domain' => $feedback->opinion->practice->domain]) }}"
-                class="py-1 px-2 bg-purple-200 rounded text font-medium text-purple-500">
-                {{ $feedback->opinion->practice->domain->name }}</a>
-            <a href="{{ route('practice', ['practice' => $feedback->opinion->practice]) }}"
-                class="hover:underline hover:text-purple-500">
-                {{ $feedback->opinion->practice->title }}</a>
-        </div>
-
-        <!-- Practice -->
-        <div class="my-2">
-            <p>{{ Str::of($feedback->opinion->description)->words(35) }}</p>
+            <p class="ml-2 mt-1 pl-2 border-l-2 border-gray-300">{{ Str::of($feedback->opinion->description)->words(35) }}</p>
         </div>
     </div>
 </div>
