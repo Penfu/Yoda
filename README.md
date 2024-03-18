@@ -5,7 +5,7 @@
 Clone the repo into your environement.
 
 ```bash
-git clone https://github.com/Penfu/ES-CPNV-Yoda.git
+git clone https://github.com/Penfu/Yoda.git
 ```
 
 ### Package manager
